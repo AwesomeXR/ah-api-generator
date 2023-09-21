@@ -1,0 +1,783 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "诗路 api",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.shiluyizhan.com/"
+    }
+  ],
+  "tags": [
+    {
+      "name": "toC",
+      "description": "面向普通用户"
+    },
+    {
+      "name": "toM",
+      "description": "面向管理员"
+    },
+    {
+      "name": "reserve",
+      "description": "预约"
+    }
+  ],
+  "paths": {
+    "/page": {
+      "get": {
+        "operationId": "page.getList",
+        "tags": ["page", "toC"],
+        "summary": "page.getList",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "title",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "summary",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "example": {
+                  "pageSize": 1,
+                  "pageNum": 1,
+                  "total": 783562,
+                  "list": [
+                    {
+                      "id": 1,
+                      "created_at": "2021-01-24T17:22:45+08:00",
+                      "updated_at": "2021-01-24T17:22:45+08:00",
+                      "level": 0,
+                      "a": "0dfew2",
+                      "b": false,
+                      "c": null,
+                      "e": true
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "page.createOne",
+        "tags": ["page", "toM"],
+        "summary": "page.createOne",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "summary": {
+                    "type": "string"
+                  },
+                  "content": {
+                    "type": "string"
+                  },
+                  "meta": {
+                    "type": "object"
+                  }
+                },
+                "required": ["title", "summary", "content", "meta"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    },
+    "/page/:name": {
+      "put": {
+        "operationId": "page.updateOne",
+        "tags": ["page", "toM"],
+        "summary": "page.updateOne",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "summary": {
+                    "type": "string"
+                  },
+                  "content": {
+                    "type": "string"
+                  },
+                  "meta": {
+                    "type": "object"
+                  }
+                },
+                "required": ["name"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      },
+      "delete": {
+        "operationId": "page.removeOne",
+        "tags": ["page", "toM"],
+        "summary": "page.removeOne",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    },
+    "/reserve_activity": {
+      "post": {
+        "operationId": "reserve.createActivity",
+        "tags": ["reserve", "toM"],
+        "summary": "创建预约活动",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "description": "活动标题"
+                  },
+                  "detail": {
+                    "type": "string"
+                  },
+                  "meta": {
+                    "type": "object",
+                    "properties": {
+                      "richDetailMeta": {
+                        "type": "object"
+                      }
+                    }
+                  }
+                },
+                "required": ["title"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      },
+      "get": {
+        "operationId": "reserve.getActivityList",
+        "tags": ["reserve", "toC"],
+        "summary": "获取预约活动列表",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    },
+    "/reserve_activity/:id": {
+      "put": {
+        "operationId": "reserve.updateActivity",
+        "tags": ["reserve", "toM"],
+        "summary": "更新预约活动",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "detail": {
+                    "type": "string"
+                  },
+                  "meta": {
+                    "type": "object",
+                    "properties": {
+                      "richDetailMeta": {
+                        "type": "object"
+                      }
+                    }
+                  }
+                },
+                "required": ["id"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      },
+      "delete": {
+        "operationId": "reserve.removeActivity",
+        "tags": ["reserve", "toM"],
+        "summary": "删除预约活动",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    },
+    "/reserve_calendar": {
+      "post": {
+        "operationId": "reserve.createCalender",
+        "tags": ["reserve", "toM"],
+        "summary": "创建日历",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "activity_id": {
+                    "type": "integer"
+                  },
+                  "list": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "start_time": {
+                          "type": "string"
+                        },
+                        "end_time": {
+                          "type": "string"
+                        },
+                        "location": {
+                          "type": "string"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "string",
+                          "enum": ["enabled", "disabled"]
+                        },
+                        "meta": {
+                          "type": "object",
+                          "properties": {
+                            "richDetailMeta": {
+                              "type": "object"
+                            }
+                          }
+                        }
+                      },
+                      "required": ["start_time", "end_time"]
+                    },
+                    "maxItems": 30
+                  }
+                },
+                "required": ["activity_id", "list"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      },
+      "get": {
+        "operationId": "reserve.getCalenderList",
+        "tags": ["reserve", "toC"],
+        "summary": "获取活动日历列表",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "activity_id",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "startTime",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "endTime",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    },
+    "/reserve_calendar/:id": {
+      "put": {
+        "operationId": "reserve.updateCalender",
+        "tags": ["reserve", "toM"],
+        "summary": "修改日历",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "start_time": {
+                    "type": "string"
+                  },
+                  "end_time": {
+                    "type": "string"
+                  },
+                  "location": {
+                    "type": "string"
+                  },
+                  "detail": {
+                    "type": "string"
+                  },
+                  "status": {
+                    "type": "string",
+                    "enum": ["enabled", "disabled"]
+                  },
+                  "meta": {
+                    "type": "object",
+                    "properties": {
+                      "richDetailMeta": {
+                        "type": "object"
+                      }
+                    }
+                  }
+                },
+                "required": ["id"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    },
+    "/reserve_request": {
+      "get": {
+        "operationId": "reserve.getUserRequestList",
+        "tags": ["reserve", "toM"],
+        "summary": "reserve.getUserRequestList",
+        "parameters": [
+          {
+            "name": "calendar_id",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    },
+    "/reserve_request/:id/confirm": {
+      "put": {
+        "operationId": "reserve.confirmUserRequest",
+        "tags": ["reserve", "toM"],
+        "summary": "reserve.confirmUserRequest",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "username": {
+                    "type": "string"
+                  }
+                },
+                "required": ["id", "username"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    },
+    "/system/apiDoc": {
+      "get": {
+        "operationId": "system.getApiDoc",
+        "tags": ["system", "toM"],
+        "summary": "system.getApiDoc",
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    },
+    "/system": {
+      "get": {
+        "operationId": "system.getList",
+        "tags": ["system", "toM"],
+        "summary": "system.getList",
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    },
+    "/system/:name": {
+      "put": {
+        "operationId": "system.updateOne",
+        "tags": ["system", "toM"],
+        "summary": "system.updateOne",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "meta": {
+                        "type": "object",
+                        "properties": {
+                          "homepageBanner": {
+                            "type": "object"
+                          }
+                        },
+                        "required": ["homepageBanner"]
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "meta": {
+                        "type": "object",
+                        "properties": {
+                          "replyScoreRankMap": {
+                            "type": "object"
+                          }
+                        },
+                        "required": ["replyScoreRankMap"]
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    },
+    "/user": {
+      "get": {
+        "operationId": "user.getUserInfo",
+        "tags": ["user", "toC"],
+        "summary": "获取用户信息",
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    },
+    "/user/updateSession": {
+      "get": {
+        "operationId": "user.updateSession",
+        "tags": ["user", "toC"],
+        "summary": "续期 session",
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    },
+    "/user/shiluRoles": {
+      "get": {
+        "operationId": "user.getShiluRoles",
+        "tags": ["user", "toC"],
+        "summary": "获取诗路角色",
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      },
+      "post": {
+        "operationId": "user.assignShiluRoles",
+        "tags": ["user", "toC"],
+        "summary": "添加诗路角色",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "roleId": {
+                    "type": "integer"
+                  }
+                },
+                "required": ["roleId"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      },
+      "delete": {
+        "operationId": "user.removeShiluRoles",
+        "tags": ["user", "toC"],
+        "summary": "删除诗路角色",
+        "parameters": [
+          {
+            "name": "roleId",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    },
+    "/user/enterCode": {
+      "get": {
+        "operationId": "user.getEnterCode",
+        "tags": ["user", "toC"],
+        "summary": "用户入场码",
+        "parameters": [
+          {
+            "name": "pavilionId",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    },
+    "/user/leaveInfo": {
+      "get": {
+        "operationId": "user.getLeaveInfo",
+        "tags": ["user", "toC"],
+        "summary": "用户离场信息",
+        "parameters": [
+          {
+            "name": "pavilionId",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    },
+    "/user/reserve_request": {
+      "post": {
+        "operationId": "user.addReserveRequest",
+        "tags": ["user", "toC"],
+        "summary": "提交预约",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "calendar_id": {
+                    "type": "integer"
+                  },
+                  "type": {
+                    "type": "string",
+                    "enum": ["team", "personal"]
+                  },
+                  "meta": {
+                    "type": "object",
+                    "properties": {
+                      "members": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "nick": {
+                              "type": "string"
+                            },
+                            "gender": {
+                              "type": "string",
+                              "enum": ["男", "女"]
+                            },
+                            "phone": {
+                              "type": "string"
+                            }
+                          },
+                          "required": ["nick", "gender", "phone"]
+                        },
+                        "maxItems": 20
+                      }
+                    }
+                  }
+                },
+                "required": ["calendar_id", "type"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    },
+    "/user/reserve_request/:id/cancel": {
+      "put": {
+        "operationId": "user.cancelReserveRequest",
+        "tags": ["user", "toC"],
+        "summary": "取消预约",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  }
+                },
+                "required": ["id"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    }
+  }
+}

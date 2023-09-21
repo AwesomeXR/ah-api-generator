@@ -1,0 +1,1629 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`generateAPIService api - {"noBuiltinService":true}: api - {"noBuiltinService":true} 1`] = `
+"//banner
+
+import { BaseService, IApiConfig } from './BaseService';
+
+/** interfaces */
+
+export type IPageService_getList_Query = {
+  name: string;
+  title?: string;
+  summary?: string;
+};
+export type IPageService_getList_Resp = {
+  pageSize: number;
+  pageNum: number;
+  total: number;
+  list: Array<{
+    id: number;
+    created_at: string;
+    updated_at: string;
+    level: number;
+    a: string;
+    b: any;
+    c: any;
+    e: any;
+  }>;
+};
+
+export type IPageService_createOne_Query = {
+  title: string;
+  summary: string;
+  content: string;
+  meta: any;
+};
+export type IPageService_createOne_Resp = any;
+
+export type IPageService_updateOne_Query = {
+  name: string;
+  title?: string;
+  summary?: string;
+  content?: string;
+  meta?: any;
+};
+export type IPageService_updateOne_Resp = any;
+
+export type IPageService_removeOne_Query = {
+  name?: string;
+};
+export type IPageService_removeOne_Resp = any;
+
+export type IReserveService_getActivityList_Query = {
+  id?: number;
+};
+export type IReserveService_getActivityList_Resp = any;
+
+export type IReserveService_createActivity_Query = {
+  /** (活动标题) */
+  title: string;
+  detail?: string;
+  meta?: {
+    richDetailMeta?: any;
+  };
+};
+export type IReserveService_createActivity_Resp = any;
+
+export type IReserveService_updateActivity_Query = {
+  id: number;
+  title?: string;
+  detail?: string;
+  meta?: {
+    richDetailMeta?: any;
+  };
+};
+export type IReserveService_updateActivity_Resp = any;
+
+export type IReserveService_removeActivity_Query = {
+  id?: number;
+};
+export type IReserveService_removeActivity_Resp = any;
+
+export type IReserveService_getCalenderList_Query = {
+  id?: number;
+  activity_id?: number;
+  startTime?: string;
+  endTime?: string;
+};
+export type IReserveService_getCalenderList_Resp = any;
+
+export type IReserveService_createCalender_Query = {
+  activity_id: number;
+  list: Array<{
+    start_time: string;
+    end_time: string;
+    location?: string;
+    detail?: string;
+    status?: 'enabled' | 'disabled';
+    meta?: {
+      richDetailMeta?: any;
+    };
+  }>;
+};
+export type IReserveService_createCalender_Resp = any;
+
+export type IReserveService_updateCalender_Query = {
+  id: number;
+  start_time?: string;
+  end_time?: string;
+  location?: string;
+  detail?: string;
+  status?: 'enabled' | 'disabled';
+  meta?: {
+    richDetailMeta?: any;
+  };
+};
+export type IReserveService_updateCalender_Resp = any;
+
+export type IReserveService_getUserRequestList_Query = {
+  calendar_id?: number;
+};
+export type IReserveService_getUserRequestList_Resp = any;
+
+export type IReserveService_confirmUserRequest_Query = {
+  id: number;
+  username: string;
+};
+export type IReserveService_confirmUserRequest_Resp = any;
+
+export type ISystemService_getApiDoc_Query = any;
+export type ISystemService_getApiDoc_Resp = any;
+
+export type ISystemService_getList_Query = any;
+export type ISystemService_getList_Resp = any;
+
+export type ISystemService_updateOne_Query = any;
+export type ISystemService_updateOne_Resp = any;
+
+export type IUserService_getUserInfo_Query = any;
+export type IUserService_getUserInfo_Resp = any;
+
+export type IUserService_updateSession_Query = any;
+export type IUserService_updateSession_Resp = any;
+
+export type IUserService_getShiluRoles_Query = any;
+export type IUserService_getShiluRoles_Resp = any;
+
+export type IUserService_assignShiluRoles_Query = {
+  roleId: number;
+};
+export type IUserService_assignShiluRoles_Resp = any;
+
+export type IUserService_removeShiluRoles_Query = {
+  roleId?: number;
+};
+export type IUserService_removeShiluRoles_Resp = any;
+
+export type IUserService_getEnterCode_Query = {
+  pavilionId?: number;
+};
+export type IUserService_getEnterCode_Resp = any;
+
+export type IUserService_getLeaveInfo_Query = {
+  pavilionId?: number;
+};
+export type IUserService_getLeaveInfo_Resp = any;
+
+export type IUserService_addReserveRequest_Query = {
+  calendar_id: number;
+  type: 'team' | 'personal';
+  meta?: {
+    members?: Array<{
+      nick: string;
+      gender: '男' | '女';
+      phone: string;
+    }>;
+  };
+};
+export type IUserService_addReserveRequest_Resp = any;
+
+export type IUserService_cancelReserveRequest_Query = {
+  id: number;
+};
+export type IUserService_cancelReserveRequest_Resp = any;
+
+export class PageService extends BaseService {
+  /**
+   * PageService.getList
+   *
+   * - description:
+   * - pathName: /page
+   * - method: GET
+   */
+  public getList = async (query: IPageService_getList_Query, config?: IApiConfig) => {
+    return this._request<IPageService_getList_Resp>('/page', 'GET', query, config);
+  };
+
+  /**
+   * PageService.createOne
+   *
+   * - description:
+   * - pathName: /page
+   * - method: POST
+   */
+  public createOne = async (query: IPageService_createOne_Query, config?: IApiConfig) => {
+    return this._request<IPageService_createOne_Resp>('/page', 'POST', query, config);
+  };
+
+  /**
+   * PageService.updateOne
+   *
+   * - description:
+   * - pathName: /page/:name
+   * - method: PUT
+   */
+  public updateOne = async (query: IPageService_updateOne_Query, config?: IApiConfig) => {
+    return this._request<IPageService_updateOne_Resp>('/page/:name', 'PUT', query, config);
+  };
+
+  /**
+   * PageService.removeOne
+   *
+   * - description:
+   * - pathName: /page/:name
+   * - method: DELETE
+   */
+  public removeOne = async (query: IPageService_removeOne_Query, config?: IApiConfig) => {
+    return this._request<IPageService_removeOne_Resp>('/page/:name', 'DELETE', query, config);
+  };
+}
+
+export class ReserveService extends BaseService {
+  /**
+   * ReserveService.getActivityList
+   *
+   * - description:
+   * - pathName: /reserve_activity
+   * - method: GET
+   */
+  public getActivityList = async (query: IReserveService_getActivityList_Query, config?: IApiConfig) => {
+    return this._request<IReserveService_getActivityList_Resp>('/reserve_activity', 'GET', query, config);
+  };
+
+  /**
+   * ReserveService.createActivity
+   *
+   * - description:
+   * - pathName: /reserve_activity
+   * - method: POST
+   */
+  public createActivity = async (query: IReserveService_createActivity_Query, config?: IApiConfig) => {
+    return this._request<IReserveService_createActivity_Resp>('/reserve_activity', 'POST', query, config);
+  };
+
+  /**
+   * ReserveService.updateActivity
+   *
+   * - description:
+   * - pathName: /reserve_activity/:id
+   * - method: PUT
+   */
+  public updateActivity = async (query: IReserveService_updateActivity_Query, config?: IApiConfig) => {
+    return this._request<IReserveService_updateActivity_Resp>('/reserve_activity/:id', 'PUT', query, config);
+  };
+
+  /**
+   * ReserveService.removeActivity
+   *
+   * - description:
+   * - pathName: /reserve_activity/:id
+   * - method: DELETE
+   */
+  public removeActivity = async (query: IReserveService_removeActivity_Query, config?: IApiConfig) => {
+    return this._request<IReserveService_removeActivity_Resp>('/reserve_activity/:id', 'DELETE', query, config);
+  };
+
+  /**
+   * ReserveService.getCalenderList
+   *
+   * - description:
+   * - pathName: /reserve_calendar
+   * - method: GET
+   */
+  public getCalenderList = async (query: IReserveService_getCalenderList_Query, config?: IApiConfig) => {
+    return this._request<IReserveService_getCalenderList_Resp>('/reserve_calendar', 'GET', query, config);
+  };
+
+  /**
+   * ReserveService.createCalender
+   *
+   * - description:
+   * - pathName: /reserve_calendar
+   * - method: POST
+   */
+  public createCalender = async (query: IReserveService_createCalender_Query, config?: IApiConfig) => {
+    return this._request<IReserveService_createCalender_Resp>('/reserve_calendar', 'POST', query, config);
+  };
+
+  /**
+   * ReserveService.updateCalender
+   *
+   * - description:
+   * - pathName: /reserve_calendar/:id
+   * - method: PUT
+   */
+  public updateCalender = async (query: IReserveService_updateCalender_Query, config?: IApiConfig) => {
+    return this._request<IReserveService_updateCalender_Resp>('/reserve_calendar/:id', 'PUT', query, config);
+  };
+
+  /**
+   * ReserveService.getUserRequestList
+   *
+   * - description:
+   * - pathName: /reserve_request
+   * - method: GET
+   */
+  public getUserRequestList = async (query: IReserveService_getUserRequestList_Query, config?: IApiConfig) => {
+    return this._request<IReserveService_getUserRequestList_Resp>('/reserve_request', 'GET', query, config);
+  };
+
+  /**
+   * ReserveService.confirmUserRequest
+   *
+   * - description:
+   * - pathName: /reserve_request/:id/confirm
+   * - method: PUT
+   */
+  public confirmUserRequest = async (query: IReserveService_confirmUserRequest_Query, config?: IApiConfig) => {
+    return this._request<IReserveService_confirmUserRequest_Resp>('/reserve_request/:id/confirm', 'PUT', query, config);
+  };
+}
+
+export class SystemService extends BaseService {
+  /**
+   * SystemService.getApiDoc
+   *
+   * - description:
+   * - pathName: /system/apiDoc
+   * - method: GET
+   */
+  public getApiDoc = async (config?: IApiConfig) => {
+    return this._request<ISystemService_getApiDoc_Resp>('/system/apiDoc', 'GET', undefined, config);
+  };
+
+  /**
+   * SystemService.getList
+   *
+   * - description:
+   * - pathName: /system
+   * - method: GET
+   */
+  public getList = async (config?: IApiConfig) => {
+    return this._request<ISystemService_getList_Resp>('/system', 'GET', undefined, config);
+  };
+
+  /**
+   * SystemService.updateOne
+   *
+   * - description:
+   * - pathName: /system/:name
+   * - method: PUT
+   */
+  public updateOne = async (config?: IApiConfig) => {
+    return this._request<ISystemService_updateOne_Resp>('/system/:name', 'PUT', undefined, config);
+  };
+}
+
+export class UserService extends BaseService {
+  /**
+   * UserService.getUserInfo
+   *
+   * - description:
+   * - pathName: /user
+   * - method: GET
+   */
+  public getUserInfo = async (config?: IApiConfig) => {
+    return this._request<IUserService_getUserInfo_Resp>('/user', 'GET', undefined, config);
+  };
+
+  /**
+   * UserService.updateSession
+   *
+   * - description:
+   * - pathName: /user/updateSession
+   * - method: GET
+   */
+  public updateSession = async (config?: IApiConfig) => {
+    return this._request<IUserService_updateSession_Resp>('/user/updateSession', 'GET', undefined, config);
+  };
+
+  /**
+   * UserService.getShiluRoles
+   *
+   * - description:
+   * - pathName: /user/shiluRoles
+   * - method: GET
+   */
+  public getShiluRoles = async (config?: IApiConfig) => {
+    return this._request<IUserService_getShiluRoles_Resp>('/user/shiluRoles', 'GET', undefined, config);
+  };
+
+  /**
+   * UserService.assignShiluRoles
+   *
+   * - description:
+   * - pathName: /user/shiluRoles
+   * - method: POST
+   */
+  public assignShiluRoles = async (query: IUserService_assignShiluRoles_Query, config?: IApiConfig) => {
+    return this._request<IUserService_assignShiluRoles_Resp>('/user/shiluRoles', 'POST', query, config);
+  };
+
+  /**
+   * UserService.removeShiluRoles
+   *
+   * - description:
+   * - pathName: /user/shiluRoles
+   * - method: DELETE
+   */
+  public removeShiluRoles = async (query: IUserService_removeShiluRoles_Query, config?: IApiConfig) => {
+    return this._request<IUserService_removeShiluRoles_Resp>('/user/shiluRoles', 'DELETE', query, config);
+  };
+
+  /**
+   * UserService.getEnterCode
+   *
+   * - description:
+   * - pathName: /user/enterCode
+   * - method: GET
+   */
+  public getEnterCode = async (query: IUserService_getEnterCode_Query, config?: IApiConfig) => {
+    return this._request<IUserService_getEnterCode_Resp>('/user/enterCode', 'GET', query, config);
+  };
+
+  /**
+   * UserService.getLeaveInfo
+   *
+   * - description:
+   * - pathName: /user/leaveInfo
+   * - method: GET
+   */
+  public getLeaveInfo = async (query: IUserService_getLeaveInfo_Query, config?: IApiConfig) => {
+    return this._request<IUserService_getLeaveInfo_Resp>('/user/leaveInfo', 'GET', query, config);
+  };
+
+  /**
+   * UserService.addReserveRequest
+   *
+   * - description:
+   * - pathName: /user/reserve_request
+   * - method: POST
+   */
+  public addReserveRequest = async (query: IUserService_addReserveRequest_Query, config?: IApiConfig) => {
+    return this._request<IUserService_addReserveRequest_Resp>('/user/reserve_request', 'POST', query, config);
+  };
+
+  /**
+   * UserService.cancelReserveRequest
+   *
+   * - description:
+   * - pathName: /user/reserve_request/:id/cancel
+   * - method: PUT
+   */
+  public cancelReserveRequest = async (query: IUserService_cancelReserveRequest_Query, config?: IApiConfig) => {
+    return this._request<IUserService_cancelReserveRequest_Resp>(
+      '/user/reserve_request/:id/cancel',
+      'PUT',
+      query,
+      config
+    );
+  };
+}
+
+export const createAllService = (tap?: (s: BaseService) => void) => {
+  const result = {
+    Page: new PageService(),
+    Reserve: new ReserveService(),
+    System: new SystemService(),
+    User: new UserService(),
+  };
+
+  // tap
+  if (tap) Object.values(result).forEach(s => tap(s));
+
+  return result;
+};
+"
+`;
+
+exports[`generateAPIService api - {"noMeta":true}: api - {"noMeta":true} 1`] = `
+"//banner
+
+import { BaseService, IApiConfig } from 'ah-api-runtime';
+
+/** interfaces */
+
+export type IPageService_getList_Query = {
+  name: string;
+  title?: string;
+  summary?: string;
+};
+export type IPageService_getList_Resp = {
+  pageSize: number;
+  pageNum: number;
+  total: number;
+  list: Array<{
+    id: number;
+    created_at: string;
+    updated_at: string;
+    level: number;
+    a: string;
+    b: any;
+    c: any;
+    e: any;
+  }>;
+};
+
+export type IPageService_createOne_Query = {
+  title: string;
+  summary: string;
+  content: string;
+  meta: any;
+};
+export type IPageService_createOne_Resp = any;
+
+export type IPageService_updateOne_Query = {
+  name: string;
+  title?: string;
+  summary?: string;
+  content?: string;
+  meta?: any;
+};
+export type IPageService_updateOne_Resp = any;
+
+export type IPageService_removeOne_Query = {
+  name?: string;
+};
+export type IPageService_removeOne_Resp = any;
+
+export type IReserveService_getActivityList_Query = {
+  id?: number;
+};
+export type IReserveService_getActivityList_Resp = any;
+
+export type IReserveService_createActivity_Query = {
+  /** (活动标题) */
+  title: string;
+  detail?: string;
+  meta?: {
+    richDetailMeta?: any;
+  };
+};
+export type IReserveService_createActivity_Resp = any;
+
+export type IReserveService_updateActivity_Query = {
+  id: number;
+  title?: string;
+  detail?: string;
+  meta?: {
+    richDetailMeta?: any;
+  };
+};
+export type IReserveService_updateActivity_Resp = any;
+
+export type IReserveService_removeActivity_Query = {
+  id?: number;
+};
+export type IReserveService_removeActivity_Resp = any;
+
+export type IReserveService_getCalenderList_Query = {
+  id?: number;
+  activity_id?: number;
+  startTime?: string;
+  endTime?: string;
+};
+export type IReserveService_getCalenderList_Resp = any;
+
+export type IReserveService_createCalender_Query = {
+  activity_id: number;
+  list: Array<{
+    start_time: string;
+    end_time: string;
+    location?: string;
+    detail?: string;
+    status?: 'enabled' | 'disabled';
+    meta?: {
+      richDetailMeta?: any;
+    };
+  }>;
+};
+export type IReserveService_createCalender_Resp = any;
+
+export type IReserveService_updateCalender_Query = {
+  id: number;
+  start_time?: string;
+  end_time?: string;
+  location?: string;
+  detail?: string;
+  status?: 'enabled' | 'disabled';
+  meta?: {
+    richDetailMeta?: any;
+  };
+};
+export type IReserveService_updateCalender_Resp = any;
+
+export type IReserveService_getUserRequestList_Query = {
+  calendar_id?: number;
+};
+export type IReserveService_getUserRequestList_Resp = any;
+
+export type IReserveService_confirmUserRequest_Query = {
+  id: number;
+  username: string;
+};
+export type IReserveService_confirmUserRequest_Resp = any;
+
+export type ISystemService_getApiDoc_Query = any;
+export type ISystemService_getApiDoc_Resp = any;
+
+export type ISystemService_getList_Query = any;
+export type ISystemService_getList_Resp = any;
+
+export type ISystemService_updateOne_Query = any;
+export type ISystemService_updateOne_Resp = any;
+
+export type IUserService_getUserInfo_Query = any;
+export type IUserService_getUserInfo_Resp = any;
+
+export type IUserService_updateSession_Query = any;
+export type IUserService_updateSession_Resp = any;
+
+export type IUserService_getShiluRoles_Query = any;
+export type IUserService_getShiluRoles_Resp = any;
+
+export type IUserService_assignShiluRoles_Query = {
+  roleId: number;
+};
+export type IUserService_assignShiluRoles_Resp = any;
+
+export type IUserService_removeShiluRoles_Query = {
+  roleId?: number;
+};
+export type IUserService_removeShiluRoles_Resp = any;
+
+export type IUserService_getEnterCode_Query = {
+  pavilionId?: number;
+};
+export type IUserService_getEnterCode_Resp = any;
+
+export type IUserService_getLeaveInfo_Query = {
+  pavilionId?: number;
+};
+export type IUserService_getLeaveInfo_Resp = any;
+
+export type IUserService_addReserveRequest_Query = {
+  calendar_id: number;
+  type: 'team' | 'personal';
+  meta?: {
+    members?: Array<{
+      nick: string;
+      gender: '男' | '女';
+      phone: string;
+    }>;
+  };
+};
+export type IUserService_addReserveRequest_Resp = any;
+
+export type IUserService_cancelReserveRequest_Query = {
+  id: number;
+};
+export type IUserService_cancelReserveRequest_Resp = any;
+
+export class PageService extends BaseService {
+  /**
+   * PageService.getList
+   *
+   * - description:
+   * - pathName: /page
+   * - method: GET
+   */
+  public getList = async (query: IPageService_getList_Query, config?: IApiConfig) => {
+    return this._request<IPageService_getList_Resp>('/page', 'GET', query, config);
+  };
+
+  /**
+   * PageService.createOne
+   *
+   * - description:
+   * - pathName: /page
+   * - method: POST
+   */
+  public createOne = async (query: IPageService_createOne_Query, config?: IApiConfig) => {
+    return this._request<IPageService_createOne_Resp>('/page', 'POST', query, config);
+  };
+
+  /**
+   * PageService.updateOne
+   *
+   * - description:
+   * - pathName: /page/:name
+   * - method: PUT
+   */
+  public updateOne = async (query: IPageService_updateOne_Query, config?: IApiConfig) => {
+    return this._request<IPageService_updateOne_Resp>('/page/:name', 'PUT', query, config);
+  };
+
+  /**
+   * PageService.removeOne
+   *
+   * - description:
+   * - pathName: /page/:name
+   * - method: DELETE
+   */
+  public removeOne = async (query: IPageService_removeOne_Query, config?: IApiConfig) => {
+    return this._request<IPageService_removeOne_Resp>('/page/:name', 'DELETE', query, config);
+  };
+}
+
+export class ReserveService extends BaseService {
+  /**
+   * ReserveService.getActivityList
+   *
+   * - description:
+   * - pathName: /reserve_activity
+   * - method: GET
+   */
+  public getActivityList = async (query: IReserveService_getActivityList_Query, config?: IApiConfig) => {
+    return this._request<IReserveService_getActivityList_Resp>('/reserve_activity', 'GET', query, config);
+  };
+
+  /**
+   * ReserveService.createActivity
+   *
+   * - description:
+   * - pathName: /reserve_activity
+   * - method: POST
+   */
+  public createActivity = async (query: IReserveService_createActivity_Query, config?: IApiConfig) => {
+    return this._request<IReserveService_createActivity_Resp>('/reserve_activity', 'POST', query, config);
+  };
+
+  /**
+   * ReserveService.updateActivity
+   *
+   * - description:
+   * - pathName: /reserve_activity/:id
+   * - method: PUT
+   */
+  public updateActivity = async (query: IReserveService_updateActivity_Query, config?: IApiConfig) => {
+    return this._request<IReserveService_updateActivity_Resp>('/reserve_activity/:id', 'PUT', query, config);
+  };
+
+  /**
+   * ReserveService.removeActivity
+   *
+   * - description:
+   * - pathName: /reserve_activity/:id
+   * - method: DELETE
+   */
+  public removeActivity = async (query: IReserveService_removeActivity_Query, config?: IApiConfig) => {
+    return this._request<IReserveService_removeActivity_Resp>('/reserve_activity/:id', 'DELETE', query, config);
+  };
+
+  /**
+   * ReserveService.getCalenderList
+   *
+   * - description:
+   * - pathName: /reserve_calendar
+   * - method: GET
+   */
+  public getCalenderList = async (query: IReserveService_getCalenderList_Query, config?: IApiConfig) => {
+    return this._request<IReserveService_getCalenderList_Resp>('/reserve_calendar', 'GET', query, config);
+  };
+
+  /**
+   * ReserveService.createCalender
+   *
+   * - description:
+   * - pathName: /reserve_calendar
+   * - method: POST
+   */
+  public createCalender = async (query: IReserveService_createCalender_Query, config?: IApiConfig) => {
+    return this._request<IReserveService_createCalender_Resp>('/reserve_calendar', 'POST', query, config);
+  };
+
+  /**
+   * ReserveService.updateCalender
+   *
+   * - description:
+   * - pathName: /reserve_calendar/:id
+   * - method: PUT
+   */
+  public updateCalender = async (query: IReserveService_updateCalender_Query, config?: IApiConfig) => {
+    return this._request<IReserveService_updateCalender_Resp>('/reserve_calendar/:id', 'PUT', query, config);
+  };
+
+  /**
+   * ReserveService.getUserRequestList
+   *
+   * - description:
+   * - pathName: /reserve_request
+   * - method: GET
+   */
+  public getUserRequestList = async (query: IReserveService_getUserRequestList_Query, config?: IApiConfig) => {
+    return this._request<IReserveService_getUserRequestList_Resp>('/reserve_request', 'GET', query, config);
+  };
+
+  /**
+   * ReserveService.confirmUserRequest
+   *
+   * - description:
+   * - pathName: /reserve_request/:id/confirm
+   * - method: PUT
+   */
+  public confirmUserRequest = async (query: IReserveService_confirmUserRequest_Query, config?: IApiConfig) => {
+    return this._request<IReserveService_confirmUserRequest_Resp>('/reserve_request/:id/confirm', 'PUT', query, config);
+  };
+}
+
+export class SystemService extends BaseService {
+  /**
+   * SystemService.getApiDoc
+   *
+   * - description:
+   * - pathName: /system/apiDoc
+   * - method: GET
+   */
+  public getApiDoc = async (config?: IApiConfig) => {
+    return this._request<ISystemService_getApiDoc_Resp>('/system/apiDoc', 'GET', undefined, config);
+  };
+
+  /**
+   * SystemService.getList
+   *
+   * - description:
+   * - pathName: /system
+   * - method: GET
+   */
+  public getList = async (config?: IApiConfig) => {
+    return this._request<ISystemService_getList_Resp>('/system', 'GET', undefined, config);
+  };
+
+  /**
+   * SystemService.updateOne
+   *
+   * - description:
+   * - pathName: /system/:name
+   * - method: PUT
+   */
+  public updateOne = async (config?: IApiConfig) => {
+    return this._request<ISystemService_updateOne_Resp>('/system/:name', 'PUT', undefined, config);
+  };
+}
+
+export class UserService extends BaseService {
+  /**
+   * UserService.getUserInfo
+   *
+   * - description:
+   * - pathName: /user
+   * - method: GET
+   */
+  public getUserInfo = async (config?: IApiConfig) => {
+    return this._request<IUserService_getUserInfo_Resp>('/user', 'GET', undefined, config);
+  };
+
+  /**
+   * UserService.updateSession
+   *
+   * - description:
+   * - pathName: /user/updateSession
+   * - method: GET
+   */
+  public updateSession = async (config?: IApiConfig) => {
+    return this._request<IUserService_updateSession_Resp>('/user/updateSession', 'GET', undefined, config);
+  };
+
+  /**
+   * UserService.getShiluRoles
+   *
+   * - description:
+   * - pathName: /user/shiluRoles
+   * - method: GET
+   */
+  public getShiluRoles = async (config?: IApiConfig) => {
+    return this._request<IUserService_getShiluRoles_Resp>('/user/shiluRoles', 'GET', undefined, config);
+  };
+
+  /**
+   * UserService.assignShiluRoles
+   *
+   * - description:
+   * - pathName: /user/shiluRoles
+   * - method: POST
+   */
+  public assignShiluRoles = async (query: IUserService_assignShiluRoles_Query, config?: IApiConfig) => {
+    return this._request<IUserService_assignShiluRoles_Resp>('/user/shiluRoles', 'POST', query, config);
+  };
+
+  /**
+   * UserService.removeShiluRoles
+   *
+   * - description:
+   * - pathName: /user/shiluRoles
+   * - method: DELETE
+   */
+  public removeShiluRoles = async (query: IUserService_removeShiluRoles_Query, config?: IApiConfig) => {
+    return this._request<IUserService_removeShiluRoles_Resp>('/user/shiluRoles', 'DELETE', query, config);
+  };
+
+  /**
+   * UserService.getEnterCode
+   *
+   * - description:
+   * - pathName: /user/enterCode
+   * - method: GET
+   */
+  public getEnterCode = async (query: IUserService_getEnterCode_Query, config?: IApiConfig) => {
+    return this._request<IUserService_getEnterCode_Resp>('/user/enterCode', 'GET', query, config);
+  };
+
+  /**
+   * UserService.getLeaveInfo
+   *
+   * - description:
+   * - pathName: /user/leaveInfo
+   * - method: GET
+   */
+  public getLeaveInfo = async (query: IUserService_getLeaveInfo_Query, config?: IApiConfig) => {
+    return this._request<IUserService_getLeaveInfo_Resp>('/user/leaveInfo', 'GET', query, config);
+  };
+
+  /**
+   * UserService.addReserveRequest
+   *
+   * - description:
+   * - pathName: /user/reserve_request
+   * - method: POST
+   */
+  public addReserveRequest = async (query: IUserService_addReserveRequest_Query, config?: IApiConfig) => {
+    return this._request<IUserService_addReserveRequest_Resp>('/user/reserve_request', 'POST', query, config);
+  };
+
+  /**
+   * UserService.cancelReserveRequest
+   *
+   * - description:
+   * - pathName: /user/reserve_request/:id/cancel
+   * - method: PUT
+   */
+  public cancelReserveRequest = async (query: IUserService_cancelReserveRequest_Query, config?: IApiConfig) => {
+    return this._request<IUserService_cancelReserveRequest_Resp>(
+      '/user/reserve_request/:id/cancel',
+      'PUT',
+      query,
+      config
+    );
+  };
+}
+
+export const createAllService = (tap?: (s: BaseService) => void) => {
+  const result = {
+    Page: new PageService(),
+    Reserve: new ReserveService(),
+    System: new SystemService(),
+    User: new UserService(),
+  };
+
+  // tap
+  if (tap) Object.values(result).forEach(s => tap(s));
+
+  return result;
+};
+"
+`;
+
+exports[`generateAPIService api - {}: api - {} 1`] = `
+"//banner
+
+import { BaseService, IApiConfig } from 'ah-api-runtime';
+
+/** interfaces */
+
+export type IPageService_getList_Query = {
+  name: string;
+  title?: string;
+  summary?: string;
+};
+export type IPageService_getList_Resp = {
+  pageSize: number;
+  pageNum: number;
+  total: number;
+  list: Array<{
+    id: number;
+    created_at: string;
+    updated_at: string;
+    level: number;
+    a: string;
+    b: any;
+    c: any;
+    e: any;
+  }>;
+};
+
+export type IPageService_createOne_Query = {
+  title: string;
+  summary: string;
+  content: string;
+  meta: any;
+};
+export type IPageService_createOne_Resp = any;
+
+export type IPageService_updateOne_Query = {
+  name: string;
+  title?: string;
+  summary?: string;
+  content?: string;
+  meta?: any;
+};
+export type IPageService_updateOne_Resp = any;
+
+export type IPageService_removeOne_Query = {
+  name?: string;
+};
+export type IPageService_removeOne_Resp = any;
+
+export type IReserveService_getActivityList_Query = {
+  id?: number;
+};
+export type IReserveService_getActivityList_Resp = any;
+
+export type IReserveService_createActivity_Query = {
+  /** (活动标题) */
+  title: string;
+  detail?: string;
+  meta?: {
+    richDetailMeta?: any;
+  };
+};
+export type IReserveService_createActivity_Resp = any;
+
+export type IReserveService_updateActivity_Query = {
+  id: number;
+  title?: string;
+  detail?: string;
+  meta?: {
+    richDetailMeta?: any;
+  };
+};
+export type IReserveService_updateActivity_Resp = any;
+
+export type IReserveService_removeActivity_Query = {
+  id?: number;
+};
+export type IReserveService_removeActivity_Resp = any;
+
+export type IReserveService_getCalenderList_Query = {
+  id?: number;
+  activity_id?: number;
+  startTime?: string;
+  endTime?: string;
+};
+export type IReserveService_getCalenderList_Resp = any;
+
+export type IReserveService_createCalender_Query = {
+  activity_id: number;
+  list: Array<{
+    start_time: string;
+    end_time: string;
+    location?: string;
+    detail?: string;
+    status?: 'enabled' | 'disabled';
+    meta?: {
+      richDetailMeta?: any;
+    };
+  }>;
+};
+export type IReserveService_createCalender_Resp = any;
+
+export type IReserveService_updateCalender_Query = {
+  id: number;
+  start_time?: string;
+  end_time?: string;
+  location?: string;
+  detail?: string;
+  status?: 'enabled' | 'disabled';
+  meta?: {
+    richDetailMeta?: any;
+  };
+};
+export type IReserveService_updateCalender_Resp = any;
+
+export type IReserveService_getUserRequestList_Query = {
+  calendar_id?: number;
+};
+export type IReserveService_getUserRequestList_Resp = any;
+
+export type IReserveService_confirmUserRequest_Query = {
+  id: number;
+  username: string;
+};
+export type IReserveService_confirmUserRequest_Resp = any;
+
+export type ISystemService_getApiDoc_Query = any;
+export type ISystemService_getApiDoc_Resp = any;
+
+export type ISystemService_getList_Query = any;
+export type ISystemService_getList_Resp = any;
+
+export type ISystemService_updateOne_Query = any;
+export type ISystemService_updateOne_Resp = any;
+
+export type IUserService_getUserInfo_Query = any;
+export type IUserService_getUserInfo_Resp = any;
+
+export type IUserService_updateSession_Query = any;
+export type IUserService_updateSession_Resp = any;
+
+export type IUserService_getShiluRoles_Query = any;
+export type IUserService_getShiluRoles_Resp = any;
+
+export type IUserService_assignShiluRoles_Query = {
+  roleId: number;
+};
+export type IUserService_assignShiluRoles_Resp = any;
+
+export type IUserService_removeShiluRoles_Query = {
+  roleId?: number;
+};
+export type IUserService_removeShiluRoles_Resp = any;
+
+export type IUserService_getEnterCode_Query = {
+  pavilionId?: number;
+};
+export type IUserService_getEnterCode_Resp = any;
+
+export type IUserService_getLeaveInfo_Query = {
+  pavilionId?: number;
+};
+export type IUserService_getLeaveInfo_Resp = any;
+
+export type IUserService_addReserveRequest_Query = {
+  calendar_id: number;
+  type: 'team' | 'personal';
+  meta?: {
+    members?: Array<{
+      nick: string;
+      gender: '男' | '女';
+      phone: string;
+    }>;
+  };
+};
+export type IUserService_addReserveRequest_Resp = any;
+
+export type IUserService_cancelReserveRequest_Query = {
+  id: number;
+};
+export type IUserService_cancelReserveRequest_Resp = any;
+
+export class PageService extends BaseService {
+  /**
+   * PageService.getList
+   *
+   * - description:
+   * - pathName: /page
+   * - method: GET
+   */
+  public getList = async (query: IPageService_getList_Query, config?: IApiConfig) => {
+    return this._request<IPageService_getList_Resp>('/page', 'GET', query, config);
+  };
+
+  /**
+   * PageService.createOne
+   *
+   * - description:
+   * - pathName: /page
+   * - method: POST
+   */
+  public createOne = async (query: IPageService_createOne_Query, config?: IApiConfig) => {
+    return this._request<IPageService_createOne_Resp>('/page', 'POST', query, config);
+  };
+
+  /**
+   * PageService.updateOne
+   *
+   * - description:
+   * - pathName: /page/:name
+   * - method: PUT
+   */
+  public updateOne = async (query: IPageService_updateOne_Query, config?: IApiConfig) => {
+    return this._request<IPageService_updateOne_Resp>('/page/:name', 'PUT', query, config);
+  };
+
+  /**
+   * PageService.removeOne
+   *
+   * - description:
+   * - pathName: /page/:name
+   * - method: DELETE
+   */
+  public removeOne = async (query: IPageService_removeOne_Query, config?: IApiConfig) => {
+    return this._request<IPageService_removeOne_Resp>('/page/:name', 'DELETE', query, config);
+  };
+}
+
+export class ReserveService extends BaseService {
+  /**
+   * ReserveService.getActivityList
+   *
+   * - description:
+   * - pathName: /reserve_activity
+   * - method: GET
+   */
+  public getActivityList = async (query: IReserveService_getActivityList_Query, config?: IApiConfig) => {
+    return this._request<IReserveService_getActivityList_Resp>('/reserve_activity', 'GET', query, config);
+  };
+
+  /**
+   * ReserveService.createActivity
+   *
+   * - description:
+   * - pathName: /reserve_activity
+   * - method: POST
+   */
+  public createActivity = async (query: IReserveService_createActivity_Query, config?: IApiConfig) => {
+    return this._request<IReserveService_createActivity_Resp>('/reserve_activity', 'POST', query, config);
+  };
+
+  /**
+   * ReserveService.updateActivity
+   *
+   * - description:
+   * - pathName: /reserve_activity/:id
+   * - method: PUT
+   */
+  public updateActivity = async (query: IReserveService_updateActivity_Query, config?: IApiConfig) => {
+    return this._request<IReserveService_updateActivity_Resp>('/reserve_activity/:id', 'PUT', query, config);
+  };
+
+  /**
+   * ReserveService.removeActivity
+   *
+   * - description:
+   * - pathName: /reserve_activity/:id
+   * - method: DELETE
+   */
+  public removeActivity = async (query: IReserveService_removeActivity_Query, config?: IApiConfig) => {
+    return this._request<IReserveService_removeActivity_Resp>('/reserve_activity/:id', 'DELETE', query, config);
+  };
+
+  /**
+   * ReserveService.getCalenderList
+   *
+   * - description:
+   * - pathName: /reserve_calendar
+   * - method: GET
+   */
+  public getCalenderList = async (query: IReserveService_getCalenderList_Query, config?: IApiConfig) => {
+    return this._request<IReserveService_getCalenderList_Resp>('/reserve_calendar', 'GET', query, config);
+  };
+
+  /**
+   * ReserveService.createCalender
+   *
+   * - description:
+   * - pathName: /reserve_calendar
+   * - method: POST
+   */
+  public createCalender = async (query: IReserveService_createCalender_Query, config?: IApiConfig) => {
+    return this._request<IReserveService_createCalender_Resp>('/reserve_calendar', 'POST', query, config);
+  };
+
+  /**
+   * ReserveService.updateCalender
+   *
+   * - description:
+   * - pathName: /reserve_calendar/:id
+   * - method: PUT
+   */
+  public updateCalender = async (query: IReserveService_updateCalender_Query, config?: IApiConfig) => {
+    return this._request<IReserveService_updateCalender_Resp>('/reserve_calendar/:id', 'PUT', query, config);
+  };
+
+  /**
+   * ReserveService.getUserRequestList
+   *
+   * - description:
+   * - pathName: /reserve_request
+   * - method: GET
+   */
+  public getUserRequestList = async (query: IReserveService_getUserRequestList_Query, config?: IApiConfig) => {
+    return this._request<IReserveService_getUserRequestList_Resp>('/reserve_request', 'GET', query, config);
+  };
+
+  /**
+   * ReserveService.confirmUserRequest
+   *
+   * - description:
+   * - pathName: /reserve_request/:id/confirm
+   * - method: PUT
+   */
+  public confirmUserRequest = async (query: IReserveService_confirmUserRequest_Query, config?: IApiConfig) => {
+    return this._request<IReserveService_confirmUserRequest_Resp>('/reserve_request/:id/confirm', 'PUT', query, config);
+  };
+}
+
+export class SystemService extends BaseService {
+  /**
+   * SystemService.getApiDoc
+   *
+   * - description:
+   * - pathName: /system/apiDoc
+   * - method: GET
+   */
+  public getApiDoc = async (config?: IApiConfig) => {
+    return this._request<ISystemService_getApiDoc_Resp>('/system/apiDoc', 'GET', undefined, config);
+  };
+
+  /**
+   * SystemService.getList
+   *
+   * - description:
+   * - pathName: /system
+   * - method: GET
+   */
+  public getList = async (config?: IApiConfig) => {
+    return this._request<ISystemService_getList_Resp>('/system', 'GET', undefined, config);
+  };
+
+  /**
+   * SystemService.updateOne
+   *
+   * - description:
+   * - pathName: /system/:name
+   * - method: PUT
+   */
+  public updateOne = async (config?: IApiConfig) => {
+    return this._request<ISystemService_updateOne_Resp>('/system/:name', 'PUT', undefined, config);
+  };
+}
+
+export class UserService extends BaseService {
+  /**
+   * UserService.getUserInfo
+   *
+   * - description:
+   * - pathName: /user
+   * - method: GET
+   */
+  public getUserInfo = async (config?: IApiConfig) => {
+    return this._request<IUserService_getUserInfo_Resp>('/user', 'GET', undefined, config);
+  };
+
+  /**
+   * UserService.updateSession
+   *
+   * - description:
+   * - pathName: /user/updateSession
+   * - method: GET
+   */
+  public updateSession = async (config?: IApiConfig) => {
+    return this._request<IUserService_updateSession_Resp>('/user/updateSession', 'GET', undefined, config);
+  };
+
+  /**
+   * UserService.getShiluRoles
+   *
+   * - description:
+   * - pathName: /user/shiluRoles
+   * - method: GET
+   */
+  public getShiluRoles = async (config?: IApiConfig) => {
+    return this._request<IUserService_getShiluRoles_Resp>('/user/shiluRoles', 'GET', undefined, config);
+  };
+
+  /**
+   * UserService.assignShiluRoles
+   *
+   * - description:
+   * - pathName: /user/shiluRoles
+   * - method: POST
+   */
+  public assignShiluRoles = async (query: IUserService_assignShiluRoles_Query, config?: IApiConfig) => {
+    return this._request<IUserService_assignShiluRoles_Resp>('/user/shiluRoles', 'POST', query, config);
+  };
+
+  /**
+   * UserService.removeShiluRoles
+   *
+   * - description:
+   * - pathName: /user/shiluRoles
+   * - method: DELETE
+   */
+  public removeShiluRoles = async (query: IUserService_removeShiluRoles_Query, config?: IApiConfig) => {
+    return this._request<IUserService_removeShiluRoles_Resp>('/user/shiluRoles', 'DELETE', query, config);
+  };
+
+  /**
+   * UserService.getEnterCode
+   *
+   * - description:
+   * - pathName: /user/enterCode
+   * - method: GET
+   */
+  public getEnterCode = async (query: IUserService_getEnterCode_Query, config?: IApiConfig) => {
+    return this._request<IUserService_getEnterCode_Resp>('/user/enterCode', 'GET', query, config);
+  };
+
+  /**
+   * UserService.getLeaveInfo
+   *
+   * - description:
+   * - pathName: /user/leaveInfo
+   * - method: GET
+   */
+  public getLeaveInfo = async (query: IUserService_getLeaveInfo_Query, config?: IApiConfig) => {
+    return this._request<IUserService_getLeaveInfo_Resp>('/user/leaveInfo', 'GET', query, config);
+  };
+
+  /**
+   * UserService.addReserveRequest
+   *
+   * - description:
+   * - pathName: /user/reserve_request
+   * - method: POST
+   */
+  public addReserveRequest = async (query: IUserService_addReserveRequest_Query, config?: IApiConfig) => {
+    return this._request<IUserService_addReserveRequest_Resp>('/user/reserve_request', 'POST', query, config);
+  };
+
+  /**
+   * UserService.cancelReserveRequest
+   *
+   * - description:
+   * - pathName: /user/reserve_request/:id/cancel
+   * - method: PUT
+   */
+  public cancelReserveRequest = async (query: IUserService_cancelReserveRequest_Query, config?: IApiConfig) => {
+    return this._request<IUserService_cancelReserveRequest_Resp>(
+      '/user/reserve_request/:id/cancel',
+      'PUT',
+      query,
+      config
+    );
+  };
+}
+
+export const createAllService = (tap?: (s: BaseService) => void) => {
+  const result = {
+    Page: new PageService(),
+    Reserve: new ReserveService(),
+    System: new SystemService(),
+    User: new UserService(),
+  };
+
+  // tap
+  if (tap) Object.values(result).forEach(s => tap(s));
+
+  return result;
+};
+"
+`;
+
+exports[`generateAPIService api2 - {"operationIdSplitter":"_"}: api2 - {"operationIdSplitter":"_"} 1`] = `
+"//banner
+
+import { BaseService, IApiConfig } from 'ah-api-runtime';
+
+/** interfaces */
+
+export type ISnapshotcontrollerService_create_Query = {
+  /** (设备 name) */
+  device: string;
+
+  /** (本地时间戳(ms)) */
+  timestamp: string;
+};
+export type ISnapshotcontrollerService_create_Resp = string;
+
+export type IFaceindexcontrollerService_getPage_Query = any;
+export type IFaceindexcontrollerService_getPage_Resp = {
+  pageSize: number;
+  pageNum: number;
+  total: number;
+  list: Array<{
+    id: number;
+    created_at: string;
+    updated_at: string;
+    age: number;
+    gender: number;
+    expression: number;
+    snapshot?: {
+      id: number;
+      created_at: string;
+      updated_at: string;
+      ossPath: string;
+      faceIndexStatus: 'init' | 'running' | 'finish' | 'error';
+      device?: {
+        id: number;
+        created_at: string;
+        updated_at: string;
+        name: string;
+        title: string;
+      };
+    };
+  }>;
+};
+
+export type IAuthcontrollerService_login_Query = {
+  name: string;
+  password: string;
+};
+export type IAuthcontrollerService_login_Resp = {
+  accessToken: string;
+  user: {
+    id: number;
+    created_at: string;
+    updated_at: string;
+    name: string;
+    nick: string;
+    role: 'normal' | 'admin';
+  };
+};
+
+export type IUsercontrollerService_getUser_Query = any;
+export type IUsercontrollerService_getUser_Resp = {
+  id: number;
+  created_at: string;
+  updated_at: string;
+  name: string;
+  nick: string;
+  role: 'normal' | 'admin';
+};
+
+export type IDevicecontrollerService_getPage_Query = any;
+export type IDevicecontrollerService_getPage_Resp = {
+  pageSize: number;
+  pageNum: number;
+  total: number;
+  list: Array<{
+    id: number;
+    created_at: string;
+    updated_at: string;
+    name: string;
+    title: string;
+  }>;
+};
+
+export class SnapshotcontrollerService extends BaseService {
+  /**
+   * SnapshotcontrollerService.create
+   *
+   * - description: 快照上传
+   * - pathName: /snapshot
+   * - method: POST
+   */
+  public create = async (query: ISnapshotcontrollerService_create_Query, config?: IApiConfig) => {
+    return this._request<ISnapshotcontrollerService_create_Resp>('/snapshot', 'POST', query, config);
+  };
+}
+
+export class FaceindexcontrollerService extends BaseService {
+  /**
+   * FaceindexcontrollerService.getPage
+   *
+   * - description:
+   * - pathName: /faceIndex
+   * - method: GET
+   */
+  public getPage = async (config?: IApiConfig) => {
+    return this._request<IFaceindexcontrollerService_getPage_Resp>('/faceIndex', 'GET', undefined, config);
+  };
+}
+
+export class AuthcontrollerService extends BaseService {
+  /**
+   * AuthcontrollerService.login
+   *
+   * - description:
+   * - pathName: /auth/login
+   * - method: POST
+   */
+  public login = async (query: IAuthcontrollerService_login_Query, config?: IApiConfig) => {
+    return this._request<IAuthcontrollerService_login_Resp>('/auth/login', 'POST', query, config);
+  };
+}
+
+export class UsercontrollerService extends BaseService {
+  /**
+   * UsercontrollerService.getUser
+   *
+   * - description: 获取用户信息
+   * - pathName: /user
+   * - method: GET
+   */
+  public getUser = async (config?: IApiConfig) => {
+    return this._request<IUsercontrollerService_getUser_Resp>('/user', 'GET', undefined, config);
+  };
+}
+
+export class DevicecontrollerService extends BaseService {
+  /**
+   * DevicecontrollerService.getPage
+   *
+   * - description:
+   * - pathName: /device
+   * - method: GET
+   */
+  public getPage = async (config?: IApiConfig) => {
+    return this._request<IDevicecontrollerService_getPage_Resp>('/device', 'GET', undefined, config);
+  };
+}
+
+export const createAllService = (tap?: (s: BaseService) => void) => {
+  const result = {
+    Snapshotcontroller: new SnapshotcontrollerService(),
+    Faceindexcontroller: new FaceindexcontrollerService(),
+    Authcontroller: new AuthcontrollerService(),
+    Usercontroller: new UsercontrollerService(),
+    Devicecontroller: new DevicecontrollerService(),
+  };
+
+  // tap
+  if (tap) Object.values(result).forEach(s => tap(s));
+
+  return result;
+};
+"
+`;

@@ -1,0 +1,48 @@
+
+<% if (extra.noBuiltinService) { %>
+import { BaseService, IApiConfig } from './BaseService';
+<% } else { %>
+import { BaseService, IApiConfig } from 'ah-api-runtime';
+<% } %>
+
+/** interfaces */
+<% for (const [sName, rMap] of Object.entries(serviceMap)) { %>
+<% for (const [rName, rMeta] of Object.entries(rMap)) { %>
+export type I<%= sName %>Service_<%= rName %>_Query = <% if (rMeta.query && rMeta.query.tsTypeLiteral) { %><%- rMeta.query.tsTypeLiteral %><% } else { %>any<% } %>;
+export type I<%= sName %>Service_<%= rName %>_Resp = <% if (rMeta.response && rMeta.response.tsTypeLiteral) { %><%- rMeta.response.tsTypeLiteral %><%} else { %>any<% } %>;
+<% } %>
+<% } %>
+
+
+<% for (const [sName, rMap] of Object.entries(serviceMap)) { %>
+export class <%= sName %>Service extends BaseService {
+  <% for (const [rName, rMeta] of Object.entries(rMap)) { %>
+  /**
+   * <%= sName %>Service.<%= rName %>
+   * 
+   * - description: <%- rMeta.description %>
+   * - pathName: <%- rMeta.pathName %>
+   * - method: <%- rMeta.method %>
+   */
+  public <%= rName %> = async (<% if (rMeta.query) { %>query: I<%= sName %>Service_<%= rName %>_Query, <% } %> config?: IApiConfig) => {
+    return this._request<I<%= sName %>Service_<%= rName %>_Resp>(
+      '<%- rMeta.pathName %>',
+      '<%- rMeta.method %>',
+      <% if (rMeta.query) { %>query<% } else { %>undefined<% } %>,
+      config
+    )
+  }
+  <% } %>
+}
+<% } %>
+
+export const createAllService = (tap?: (s: BaseService) => void) => {
+  const result = {
+    <% for (const sName of Object.keys(serviceMap)) { %> <%= sName %>: new <%= sName %>Service(), <% } %>
+  };
+
+  // tap
+  if (tap) Object.values(result).forEach(s => tap(s));
+
+  return result;
+};

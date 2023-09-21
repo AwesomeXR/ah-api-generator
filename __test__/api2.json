@@ -1,0 +1,189 @@
+{
+  "openapi": "3.0.0",
+  "info": { "title": "Hot capturer", "description": "", "version": "1.0", "contact": {} },
+  "tags": [],
+  "servers": [],
+  "components": {
+    "schemas": {
+      "CreateSnapshotReqDTO": {
+        "type": "object",
+        "properties": {
+          "device": { "type": "string", "description": "设备 name" },
+          "timestamp": { "type": "string", "description": "本地时间戳(ms)" }
+        },
+        "required": ["device", "timestamp"]
+      },
+      "DeviceRspDTO": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "number" },
+          "created_at": { "type": "string" },
+          "updated_at": { "type": "string" },
+          "name": { "type": "string" },
+          "title": { "type": "string" }
+        },
+        "required": ["id", "created_at", "updated_at", "name", "title"]
+      },
+      "SnapshotRspDTO": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "number" },
+          "created_at": { "type": "string" },
+          "updated_at": { "type": "string" },
+          "ossPath": { "type": "string" },
+          "faceIndexStatus": { "type": "string", "enum": ["init", "running", "finish", "error"] },
+          "device": { "$ref": "#/components/schemas/DeviceRspDTO" }
+        },
+        "required": ["id", "created_at", "updated_at", "ossPath", "faceIndexStatus"]
+      },
+      "FaceIndexRstDTO": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "number" },
+          "created_at": { "type": "string" },
+          "updated_at": { "type": "string" },
+          "age": { "type": "number" },
+          "gender": { "type": "number" },
+          "expression": { "type": "number" },
+          "snapshot": { "$ref": "#/components/schemas/SnapshotRspDTO" }
+        },
+        "required": ["id", "created_at", "updated_at", "age", "gender", "expression"]
+      },
+      "FaceIndexPageRspDTO": {
+        "type": "object",
+        "properties": {
+          "pageSize": { "type": "number" },
+          "pageNum": { "type": "number" },
+          "total": { "type": "number" },
+          "list": { "type": "array", "items": { "$ref": "#/components/schemas/FaceIndexRstDTO" } }
+        },
+        "required": ["pageSize", "pageNum", "total", "list"]
+      },
+      "LoginReqDTO": {
+        "type": "object",
+        "properties": { "name": { "type": "string" }, "password": { "type": "string" } },
+        "required": ["name", "password"]
+      },
+      "UserRspDTO": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "number" },
+          "created_at": { "type": "string" },
+          "updated_at": { "type": "string" },
+          "name": { "type": "string" },
+          "nick": { "type": "string" },
+          "role": { "type": "string", "enum": ["normal", "admin"] }
+        },
+        "required": ["id", "created_at", "updated_at", "name", "nick", "role"]
+      },
+      "LoginRspDTO": {
+        "type": "object",
+        "properties": {
+          "accessToken": { "type": "string" },
+          "user": { "$ref": "#/components/schemas/UserRspDTO" }
+        },
+        "required": ["accessToken", "user"]
+      },
+      "DevicePageRspDTO": {
+        "type": "object",
+        "properties": {
+          "pageSize": { "type": "number" },
+          "pageNum": { "type": "number" },
+          "total": { "type": "number" },
+          "list": { "type": "array", "items": { "$ref": "#/components/schemas/DeviceRspDTO" } }
+        },
+        "required": ["pageSize", "pageNum", "total", "list"]
+      }
+    }
+  },
+  "paths": {
+    "/snapshot": {
+      "post": {
+        "operationId": "SnapshotController_create",
+        "summary": "",
+        "description": "快照上传",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/CreateSnapshotReqDTO" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": { "application/json": { "schema": { "type": "string" } } }
+          }
+        }
+      }
+    },
+    "/faceIndex": {
+      "get": {
+        "operationId": "FaceIndexController_getPage",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/FaceIndexPageRspDTO" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "operationId": "AuthController_login",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/LoginReqDTO" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/LoginRspDTO" } }
+            }
+          }
+        }
+      }
+    },
+    "/user": {
+      "get": {
+        "operationId": "UserController_getUser",
+        "summary": "",
+        "description": "获取用户信息",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/UserRspDTO" } }
+            }
+          }
+        }
+      }
+    },
+    "/device": {
+      "get": {
+        "operationId": "DeviceController_getPage",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/DevicePageRspDTO" } }
+            }
+          }
+        }
+      }
+    }
+  }
+}

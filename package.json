@@ -1,0 +1,42 @@
+{
+  "name": "ah-api-generator",
+  "version": "4.0.13",
+  "description": "ah-api-generator",
+  "files": [
+    "dist",
+    "template.ejs"
+  ],
+  "bin": "dist/cli.js",
+  "main": "dist/index.js",
+  "scripts": {
+    "ci": "prettier --check src && tsc -p tsconfig.json --noEmit && jest --detectOpenHandles",
+    "build": "tsc -p tsconfig.json -outDir dist",
+    "release": "npm run ci && npm run build && release-it"
+  },
+  "author": "concefly@foxmail.com",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/ejs": "^3.0.5",
+    "@types/jest": "^26.0.16",
+    "@types/lodash": "^4.14.167",
+    "@types/node": "^12.7.1",
+    "@types/yargs": "^16.0.4",
+    "jest": "^29.7.0",
+    "openapi-types": "^7.2.3",
+    "release-it": "^16.1.5",
+    "ts-jest": "^29.1.1",
+    "typescript": "^5.0.4"
+  },
+  "sideEffects": false,
+  "dependencies": {
+    "@apidevtools/json-schema-ref-parser": "^9.0.7",
+    "@types/prettier": "^2.4.1",
+    "ah-api-type": "^3.0.7",
+    "ejs": "^3.1.6",
+    "jsonschema": "^1.4.0",
+    "lodash": "^4.17.20",
+    "prettier": "^2.2.1",
+    "urllib": "^2.37.0",
+    "yargs": "^16.2.0"
+  }
+}
