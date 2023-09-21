@@ -9,7 +9,7 @@
   "bin": "dist/cli.js",
   "main": "dist/index.js",
   "scripts": {
-    "ci": "prettier --check src && tsc -p tsconfig.json --noEmit && jest --detectOpenHandles",
+    "ci": "prettier --check src && tsc -p tsconfig.build.json --noEmit && jest --detectOpenHandles",
     "build": "tsc -p tsconfig.json -outDir dist",
     "release": "npm run ci && npm run build && release-it"
   },
