@@ -16,6 +16,7 @@ export interface IConfig {
   banner?: string;
   noMeta?: boolean;
   noBuiltinService?: boolean;
+  usePrototypeMethod?: boolean;
   dump?: string;
 }
 
@@ -44,6 +45,7 @@ export const generateAPIService = async (cfg: IConfig) => {
     dump,
     noBuiltinService,
     banner,
+    usePrototypeMethod,
   } = cfg;
 
   const apiDoc = await loadApiDoc(input);
@@ -52,7 +54,7 @@ export const generateAPIService = async (cfg: IConfig) => {
   // render template
   let content = ejs.render(fs.readFileSync(template, { encoding: 'utf-8' }), {
     serviceMap,
-    extra: { noBuiltinService },
+    extra: { noBuiltinService, usePrototypeMethod },
   });
 
   if (banner) content = banner + '\n' + content;

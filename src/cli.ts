@@ -9,6 +9,7 @@ const args = yargs
   .option('operation-id-splitter', { describe: 'operationId 分隔符，默认', type: 'string' })
   .option('banner', { alias: 'b', describe: 'banner', type: 'string' })
   .option('drop-builtin-service', { describe: '不使用内建 Service 基类', type: 'boolean' })
+  .option('use-prototype-method', { describe: '把 method 生成到 prototype', type: 'boolean' })
   .option('dump', { alias: 'd', describe: '导出', type: 'string' }).argv;
 
 generateAPIService({
@@ -27,6 +28,7 @@ generateAPIService({
   operationIdSplitter: args['operation-id-splitter'],
   banner: args.banner,
   noBuiltinService: args['drop-builtin-service'],
+  usePrototypeMethod: args['use-prototype-method'],
   dump: args.dump,
 })
   .then(content => {

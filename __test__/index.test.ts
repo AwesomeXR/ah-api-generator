@@ -6,6 +6,7 @@ describe('generateAPIService', () => {
     { input: 'api2', invokeArgs: { operationIdSplitter: '_' } },
     { input: 'api', invokeArgs: { noMeta: true } },
     { input: 'api', invokeArgs: { noBuiltinService: true } },
+    { input: 'api', invokeArgs: { usePrototypeMethod: true } },
   ];
 
   testList.forEach(({ input, invokeArgs }) => {

@@ -24,7 +24,13 @@ export class <%= sName %>Service extends BaseService {
    * - pathName: <%- rMeta.pathName %>
    * - method: <%- rMeta.method %>
    */
-  public <%= rName %> = async (<% if (rMeta.query) { %>query: I<%= sName %>Service_<%= rName %>_Query, <% } %> config?: IApiConfig) => {
+  public <% 
+      if(extra.usePrototypeMethod) { 
+    %>async <%= rName %>(<% if (rMeta.query) { %>query: I<%= sName %>Service_<%= rName %>_Query, <% } %> config?: IApiConfig)<% 
+      } else { 
+    %><%= rName %> = async (<% if (rMeta.query) { %>query: I<%= sName %>Service_<%= rName %>_Query, <% } %> config?: IApiConfig) =><% 
+      } 
+    %> {
     return this._request<I<%= sName %>Service_<%= rName %>_Resp>(
       '<%- rMeta.pathName %>',
       '<%- rMeta.method %>',
