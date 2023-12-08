@@ -15,6 +15,9 @@
   },
   "author": "concefly@foxmail.com",
   "license": "ISC",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "devDependencies": {
     "@types/ejs": "^3.0.5",
     "@types/jest": "^26.0.16",
