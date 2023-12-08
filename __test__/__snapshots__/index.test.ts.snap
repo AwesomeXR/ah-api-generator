@@ -5,6 +5,8 @@ exports[`generateAPIService api - {"noBuiltinService":true}: api - {"noBuiltinSe
 
 import { BaseService, IApiConfig } from './BaseService';
 
+export interface IServiceRespCommon {} // for custom extend
+
 /** interfaces */
 
 export type IPageService_getList_Query = {
@@ -12,6 +14,8 @@ export type IPageService_getList_Query = {
   title?: string;
   summary?: string;
 };
+
+export interface IPageService_getList_Resp_ext extends IServiceRespCommon {} // for custom extend
 export type IPageService_getList_Resp = {
   pageSize: number;
   pageNum: number;
@@ -26,7 +30,7 @@ export type IPageService_getList_Resp = {
     c: any;
     e: any;
   }>;
-};
+} & IPageService_getList_Resp_ext;
 
 export type IPageService_createOne_Query = {
   title: string;
@@ -34,7 +38,9 @@ export type IPageService_createOne_Query = {
   content: string;
   meta: any;
 };
-export type IPageService_createOne_Resp = any;
+
+export interface IPageService_createOne_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IPageService_createOne_Resp = IPageService_createOne_Resp_ext;
 
 export type IPageService_updateOne_Query = {
   name: string;
@@ -43,17 +49,23 @@ export type IPageService_updateOne_Query = {
   content?: string;
   meta?: any;
 };
-export type IPageService_updateOne_Resp = any;
+
+export interface IPageService_updateOne_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IPageService_updateOne_Resp = IPageService_updateOne_Resp_ext;
 
 export type IPageService_removeOne_Query = {
   name?: string;
 };
-export type IPageService_removeOne_Resp = any;
+
+export interface IPageService_removeOne_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IPageService_removeOne_Resp = IPageService_removeOne_Resp_ext;
 
 export type IReserveService_getActivityList_Query = {
   id?: number;
 };
-export type IReserveService_getActivityList_Resp = any;
+
+export interface IReserveService_getActivityList_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IReserveService_getActivityList_Resp = IReserveService_getActivityList_Resp_ext;
 
 export type IReserveService_createActivity_Query = {
   /** (活动标题) */
@@ -63,7 +75,9 @@ export type IReserveService_createActivity_Query = {
     richDetailMeta?: any;
   };
 };
-export type IReserveService_createActivity_Resp = any;
+
+export interface IReserveService_createActivity_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IReserveService_createActivity_Resp = IReserveService_createActivity_Resp_ext;
 
 export type IReserveService_updateActivity_Query = {
   id: number;
@@ -73,12 +87,16 @@ export type IReserveService_updateActivity_Query = {
     richDetailMeta?: any;
   };
 };
-export type IReserveService_updateActivity_Resp = any;
+
+export interface IReserveService_updateActivity_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IReserveService_updateActivity_Resp = IReserveService_updateActivity_Resp_ext;
 
 export type IReserveService_removeActivity_Query = {
   id?: number;
 };
-export type IReserveService_removeActivity_Resp = any;
+
+export interface IReserveService_removeActivity_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IReserveService_removeActivity_Resp = IReserveService_removeActivity_Resp_ext;
 
 export type IReserveService_getCalenderList_Query = {
   id?: number;
@@ -86,7 +104,9 @@ export type IReserveService_getCalenderList_Query = {
   startTime?: string;
   endTime?: string;
 };
-export type IReserveService_getCalenderList_Resp = any;
+
+export interface IReserveService_getCalenderList_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IReserveService_getCalenderList_Resp = IReserveService_getCalenderList_Resp_ext;
 
 export type IReserveService_createCalender_Query = {
   activity_id: number;
@@ -101,7 +121,9 @@ export type IReserveService_createCalender_Query = {
     };
   }>;
 };
-export type IReserveService_createCalender_Resp = any;
+
+export interface IReserveService_createCalender_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IReserveService_createCalender_Resp = IReserveService_createCalender_Resp_ext;
 
 export type IReserveService_updateCalender_Query = {
   id: number;
@@ -114,56 +136,82 @@ export type IReserveService_updateCalender_Query = {
     richDetailMeta?: any;
   };
 };
-export type IReserveService_updateCalender_Resp = any;
+
+export interface IReserveService_updateCalender_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IReserveService_updateCalender_Resp = IReserveService_updateCalender_Resp_ext;
 
 export type IReserveService_getUserRequestList_Query = {
   calendar_id?: number;
 };
-export type IReserveService_getUserRequestList_Resp = any;
+
+export interface IReserveService_getUserRequestList_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IReserveService_getUserRequestList_Resp = IReserveService_getUserRequestList_Resp_ext;
 
 export type IReserveService_confirmUserRequest_Query = {
   id: number;
   username: string;
 };
-export type IReserveService_confirmUserRequest_Resp = any;
+
+export interface IReserveService_confirmUserRequest_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IReserveService_confirmUserRequest_Resp = IReserveService_confirmUserRequest_Resp_ext;
 
 export type ISystemService_getApiDoc_Query = any;
-export type ISystemService_getApiDoc_Resp = any;
+
+export interface ISystemService_getApiDoc_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type ISystemService_getApiDoc_Resp = ISystemService_getApiDoc_Resp_ext;
 
 export type ISystemService_getList_Query = any;
-export type ISystemService_getList_Resp = any;
+
+export interface ISystemService_getList_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type ISystemService_getList_Resp = ISystemService_getList_Resp_ext;
 
 export type ISystemService_updateOne_Query = any;
-export type ISystemService_updateOne_Resp = any;
+
+export interface ISystemService_updateOne_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type ISystemService_updateOne_Resp = ISystemService_updateOne_Resp_ext;
 
 export type IUserService_getUserInfo_Query = any;
-export type IUserService_getUserInfo_Resp = any;
+
+export interface IUserService_getUserInfo_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IUserService_getUserInfo_Resp = IUserService_getUserInfo_Resp_ext;
 
 export type IUserService_updateSession_Query = any;
-export type IUserService_updateSession_Resp = any;
+
+export interface IUserService_updateSession_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IUserService_updateSession_Resp = IUserService_updateSession_Resp_ext;
 
 export type IUserService_getShiluRoles_Query = any;
-export type IUserService_getShiluRoles_Resp = any;
+
+export interface IUserService_getShiluRoles_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IUserService_getShiluRoles_Resp = IUserService_getShiluRoles_Resp_ext;
 
 export type IUserService_assignShiluRoles_Query = {
   roleId: number;
 };
-export type IUserService_assignShiluRoles_Resp = any;
+
+export interface IUserService_assignShiluRoles_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IUserService_assignShiluRoles_Resp = IUserService_assignShiluRoles_Resp_ext;
 
 export type IUserService_removeShiluRoles_Query = {
   roleId?: number;
 };
-export type IUserService_removeShiluRoles_Resp = any;
+
+export interface IUserService_removeShiluRoles_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IUserService_removeShiluRoles_Resp = IUserService_removeShiluRoles_Resp_ext;
 
 export type IUserService_getEnterCode_Query = {
   pavilionId?: number;
 };
-export type IUserService_getEnterCode_Resp = any;
+
+export interface IUserService_getEnterCode_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IUserService_getEnterCode_Resp = IUserService_getEnterCode_Resp_ext;
 
 export type IUserService_getLeaveInfo_Query = {
   pavilionId?: number;
 };
-export type IUserService_getLeaveInfo_Resp = any;
+
+export interface IUserService_getLeaveInfo_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IUserService_getLeaveInfo_Resp = IUserService_getLeaveInfo_Resp_ext;
 
 export type IUserService_addReserveRequest_Query = {
   calendar_id: number;
@@ -176,12 +224,16 @@ export type IUserService_addReserveRequest_Query = {
     }>;
   };
 };
-export type IUserService_addReserveRequest_Resp = any;
+
+export interface IUserService_addReserveRequest_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IUserService_addReserveRequest_Resp = IUserService_addReserveRequest_Resp_ext;
 
 export type IUserService_cancelReserveRequest_Query = {
   id: number;
 };
-export type IUserService_cancelReserveRequest_Resp = any;
+
+export interface IUserService_cancelReserveRequest_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IUserService_cancelReserveRequest_Resp = IUserService_cancelReserveRequest_Resp_ext;
 
 export class PageService extends BaseService {
   /**
@@ -492,6 +544,8 @@ exports[`generateAPIService api - {"noMeta":true}: api - {"noMeta":true} 1`] = `
 
 import { BaseService, IApiConfig } from 'ah-api-runtime';
 
+export interface IServiceRespCommon {} // for custom extend
+
 /** interfaces */
 
 export type IPageService_getList_Query = {
@@ -499,6 +553,8 @@ export type IPageService_getList_Query = {
   title?: string;
   summary?: string;
 };
+
+export interface IPageService_getList_Resp_ext extends IServiceRespCommon {} // for custom extend
 export type IPageService_getList_Resp = {
   pageSize: number;
   pageNum: number;
@@ -513,7 +569,7 @@ export type IPageService_getList_Resp = {
     c: any;
     e: any;
   }>;
-};
+} & IPageService_getList_Resp_ext;
 
 export type IPageService_createOne_Query = {
   title: string;
@@ -521,7 +577,9 @@ export type IPageService_createOne_Query = {
   content: string;
   meta: any;
 };
-export type IPageService_createOne_Resp = any;
+
+export interface IPageService_createOne_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IPageService_createOne_Resp = IPageService_createOne_Resp_ext;
 
 export type IPageService_updateOne_Query = {
   name: string;
@@ -530,17 +588,23 @@ export type IPageService_updateOne_Query = {
   content?: string;
   meta?: any;
 };
-export type IPageService_updateOne_Resp = any;
+
+export interface IPageService_updateOne_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IPageService_updateOne_Resp = IPageService_updateOne_Resp_ext;
 
 export type IPageService_removeOne_Query = {
   name?: string;
 };
-export type IPageService_removeOne_Resp = any;
+
+export interface IPageService_removeOne_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IPageService_removeOne_Resp = IPageService_removeOne_Resp_ext;
 
 export type IReserveService_getActivityList_Query = {
   id?: number;
 };
-export type IReserveService_getActivityList_Resp = any;
+
+export interface IReserveService_getActivityList_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IReserveService_getActivityList_Resp = IReserveService_getActivityList_Resp_ext;
 
 export type IReserveService_createActivity_Query = {
   /** (活动标题) */
@@ -550,7 +614,9 @@ export type IReserveService_createActivity_Query = {
     richDetailMeta?: any;
   };
 };
-export type IReserveService_createActivity_Resp = any;
+
+export interface IReserveService_createActivity_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IReserveService_createActivity_Resp = IReserveService_createActivity_Resp_ext;
 
 export type IReserveService_updateActivity_Query = {
   id: number;
@@ -560,12 +626,16 @@ export type IReserveService_updateActivity_Query = {
     richDetailMeta?: any;
   };
 };
-export type IReserveService_updateActivity_Resp = any;
+
+export interface IReserveService_updateActivity_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IReserveService_updateActivity_Resp = IReserveService_updateActivity_Resp_ext;
 
 export type IReserveService_removeActivity_Query = {
   id?: number;
 };
-export type IReserveService_removeActivity_Resp = any;
+
+export interface IReserveService_removeActivity_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IReserveService_removeActivity_Resp = IReserveService_removeActivity_Resp_ext;
 
 export type IReserveService_getCalenderList_Query = {
   id?: number;
@@ -573,7 +643,9 @@ export type IReserveService_getCalenderList_Query = {
   startTime?: string;
   endTime?: string;
 };
-export type IReserveService_getCalenderList_Resp = any;
+
+export interface IReserveService_getCalenderList_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IReserveService_getCalenderList_Resp = IReserveService_getCalenderList_Resp_ext;
 
 export type IReserveService_createCalender_Query = {
   activity_id: number;
@@ -588,7 +660,9 @@ export type IReserveService_createCalender_Query = {
     };
   }>;
 };
-export type IReserveService_createCalender_Resp = any;
+
+export interface IReserveService_createCalender_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IReserveService_createCalender_Resp = IReserveService_createCalender_Resp_ext;
 
 export type IReserveService_updateCalender_Query = {
   id: number;
@@ -601,56 +675,82 @@ export type IReserveService_updateCalender_Query = {
     richDetailMeta?: any;
   };
 };
-export type IReserveService_updateCalender_Resp = any;
+
+export interface IReserveService_updateCalender_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IReserveService_updateCalender_Resp = IReserveService_updateCalender_Resp_ext;
 
 export type IReserveService_getUserRequestList_Query = {
   calendar_id?: number;
 };
-export type IReserveService_getUserRequestList_Resp = any;
+
+export interface IReserveService_getUserRequestList_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IReserveService_getUserRequestList_Resp = IReserveService_getUserRequestList_Resp_ext;
 
 export type IReserveService_confirmUserRequest_Query = {
   id: number;
   username: string;
 };
-export type IReserveService_confirmUserRequest_Resp = any;
+
+export interface IReserveService_confirmUserRequest_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IReserveService_confirmUserRequest_Resp = IReserveService_confirmUserRequest_Resp_ext;
 
 export type ISystemService_getApiDoc_Query = any;
-export type ISystemService_getApiDoc_Resp = any;
+
+export interface ISystemService_getApiDoc_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type ISystemService_getApiDoc_Resp = ISystemService_getApiDoc_Resp_ext;
 
 export type ISystemService_getList_Query = any;
-export type ISystemService_getList_Resp = any;
+
+export interface ISystemService_getList_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type ISystemService_getList_Resp = ISystemService_getList_Resp_ext;
 
 export type ISystemService_updateOne_Query = any;
-export type ISystemService_updateOne_Resp = any;
+
+export interface ISystemService_updateOne_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type ISystemService_updateOne_Resp = ISystemService_updateOne_Resp_ext;
 
 export type IUserService_getUserInfo_Query = any;
-export type IUserService_getUserInfo_Resp = any;
+
+export interface IUserService_getUserInfo_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IUserService_getUserInfo_Resp = IUserService_getUserInfo_Resp_ext;
 
 export type IUserService_updateSession_Query = any;
-export type IUserService_updateSession_Resp = any;
+
+export interface IUserService_updateSession_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IUserService_updateSession_Resp = IUserService_updateSession_Resp_ext;
 
 export type IUserService_getShiluRoles_Query = any;
-export type IUserService_getShiluRoles_Resp = any;
+
+export interface IUserService_getShiluRoles_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IUserService_getShiluRoles_Resp = IUserService_getShiluRoles_Resp_ext;
 
 export type IUserService_assignShiluRoles_Query = {
   roleId: number;
 };
-export type IUserService_assignShiluRoles_Resp = any;
+
+export interface IUserService_assignShiluRoles_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IUserService_assignShiluRoles_Resp = IUserService_assignShiluRoles_Resp_ext;
 
 export type IUserService_removeShiluRoles_Query = {
   roleId?: number;
 };
-export type IUserService_removeShiluRoles_Resp = any;
+
+export interface IUserService_removeShiluRoles_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IUserService_removeShiluRoles_Resp = IUserService_removeShiluRoles_Resp_ext;
 
 export type IUserService_getEnterCode_Query = {
   pavilionId?: number;
 };
-export type IUserService_getEnterCode_Resp = any;
+
+export interface IUserService_getEnterCode_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IUserService_getEnterCode_Resp = IUserService_getEnterCode_Resp_ext;
 
 export type IUserService_getLeaveInfo_Query = {
   pavilionId?: number;
 };
-export type IUserService_getLeaveInfo_Resp = any;
+
+export interface IUserService_getLeaveInfo_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IUserService_getLeaveInfo_Resp = IUserService_getLeaveInfo_Resp_ext;
 
 export type IUserService_addReserveRequest_Query = {
   calendar_id: number;
@@ -663,12 +763,16 @@ export type IUserService_addReserveRequest_Query = {
     }>;
   };
 };
-export type IUserService_addReserveRequest_Resp = any;
+
+export interface IUserService_addReserveRequest_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IUserService_addReserveRequest_Resp = IUserService_addReserveRequest_Resp_ext;
 
 export type IUserService_cancelReserveRequest_Query = {
   id: number;
 };
-export type IUserService_cancelReserveRequest_Resp = any;
+
+export interface IUserService_cancelReserveRequest_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IUserService_cancelReserveRequest_Resp = IUserService_cancelReserveRequest_Resp_ext;
 
 export class PageService extends BaseService {
   /**
@@ -979,6 +1083,8 @@ exports[`generateAPIService api - {"usePrototypeMethod":true}: api - {"useProtot
 
 import { BaseService, IApiConfig } from 'ah-api-runtime';
 
+export interface IServiceRespCommon {} // for custom extend
+
 /** interfaces */
 
 export type IPageService_getList_Query = {
@@ -986,6 +1092,8 @@ export type IPageService_getList_Query = {
   title?: string;
   summary?: string;
 };
+
+export interface IPageService_getList_Resp_ext extends IServiceRespCommon {} // for custom extend
 export type IPageService_getList_Resp = {
   pageSize: number;
   pageNum: number;
@@ -1000,7 +1108,7 @@ export type IPageService_getList_Resp = {
     c: any;
     e: any;
   }>;
-};
+} & IPageService_getList_Resp_ext;
 
 export type IPageService_createOne_Query = {
   title: string;
@@ -1008,7 +1116,9 @@ export type IPageService_createOne_Query = {
   content: string;
   meta: any;
 };
-export type IPageService_createOne_Resp = any;
+
+export interface IPageService_createOne_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IPageService_createOne_Resp = IPageService_createOne_Resp_ext;
 
 export type IPageService_updateOne_Query = {
   name: string;
@@ -1017,17 +1127,23 @@ export type IPageService_updateOne_Query = {
   content?: string;
   meta?: any;
 };
-export type IPageService_updateOne_Resp = any;
+
+export interface IPageService_updateOne_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IPageService_updateOne_Resp = IPageService_updateOne_Resp_ext;
 
 export type IPageService_removeOne_Query = {
   name?: string;
 };
-export type IPageService_removeOne_Resp = any;
+
+export interface IPageService_removeOne_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IPageService_removeOne_Resp = IPageService_removeOne_Resp_ext;
 
 export type IReserveService_getActivityList_Query = {
   id?: number;
 };
-export type IReserveService_getActivityList_Resp = any;
+
+export interface IReserveService_getActivityList_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IReserveService_getActivityList_Resp = IReserveService_getActivityList_Resp_ext;
 
 export type IReserveService_createActivity_Query = {
   /** (活动标题) */
@@ -1037,7 +1153,9 @@ export type IReserveService_createActivity_Query = {
     richDetailMeta?: any;
   };
 };
-export type IReserveService_createActivity_Resp = any;
+
+export interface IReserveService_createActivity_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IReserveService_createActivity_Resp = IReserveService_createActivity_Resp_ext;
 
 export type IReserveService_updateActivity_Query = {
   id: number;
@@ -1047,12 +1165,16 @@ export type IReserveService_updateActivity_Query = {
     richDetailMeta?: any;
   };
 };
-export type IReserveService_updateActivity_Resp = any;
+
+export interface IReserveService_updateActivity_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IReserveService_updateActivity_Resp = IReserveService_updateActivity_Resp_ext;
 
 export type IReserveService_removeActivity_Query = {
   id?: number;
 };
-export type IReserveService_removeActivity_Resp = any;
+
+export interface IReserveService_removeActivity_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IReserveService_removeActivity_Resp = IReserveService_removeActivity_Resp_ext;
 
 export type IReserveService_getCalenderList_Query = {
   id?: number;
@@ -1060,7 +1182,9 @@ export type IReserveService_getCalenderList_Query = {
   startTime?: string;
   endTime?: string;
 };
-export type IReserveService_getCalenderList_Resp = any;
+
+export interface IReserveService_getCalenderList_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IReserveService_getCalenderList_Resp = IReserveService_getCalenderList_Resp_ext;
 
 export type IReserveService_createCalender_Query = {
   activity_id: number;
@@ -1075,7 +1199,9 @@ export type IReserveService_createCalender_Query = {
     };
   }>;
 };
-export type IReserveService_createCalender_Resp = any;
+
+export interface IReserveService_createCalender_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IReserveService_createCalender_Resp = IReserveService_createCalender_Resp_ext;
 
 export type IReserveService_updateCalender_Query = {
   id: number;
@@ -1088,56 +1214,82 @@ export type IReserveService_updateCalender_Query = {
     richDetailMeta?: any;
   };
 };
-export type IReserveService_updateCalender_Resp = any;
+
+export interface IReserveService_updateCalender_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IReserveService_updateCalender_Resp = IReserveService_updateCalender_Resp_ext;
 
 export type IReserveService_getUserRequestList_Query = {
   calendar_id?: number;
 };
-export type IReserveService_getUserRequestList_Resp = any;
+
+export interface IReserveService_getUserRequestList_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IReserveService_getUserRequestList_Resp = IReserveService_getUserRequestList_Resp_ext;
 
 export type IReserveService_confirmUserRequest_Query = {
   id: number;
   username: string;
 };
-export type IReserveService_confirmUserRequest_Resp = any;
+
+export interface IReserveService_confirmUserRequest_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IReserveService_confirmUserRequest_Resp = IReserveService_confirmUserRequest_Resp_ext;
 
 export type ISystemService_getApiDoc_Query = any;
-export type ISystemService_getApiDoc_Resp = any;
+
+export interface ISystemService_getApiDoc_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type ISystemService_getApiDoc_Resp = ISystemService_getApiDoc_Resp_ext;
 
 export type ISystemService_getList_Query = any;
-export type ISystemService_getList_Resp = any;
+
+export interface ISystemService_getList_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type ISystemService_getList_Resp = ISystemService_getList_Resp_ext;
 
 export type ISystemService_updateOne_Query = any;
-export type ISystemService_updateOne_Resp = any;
+
+export interface ISystemService_updateOne_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type ISystemService_updateOne_Resp = ISystemService_updateOne_Resp_ext;
 
 export type IUserService_getUserInfo_Query = any;
-export type IUserService_getUserInfo_Resp = any;
+
+export interface IUserService_getUserInfo_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IUserService_getUserInfo_Resp = IUserService_getUserInfo_Resp_ext;
 
 export type IUserService_updateSession_Query = any;
-export type IUserService_updateSession_Resp = any;
+
+export interface IUserService_updateSession_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IUserService_updateSession_Resp = IUserService_updateSession_Resp_ext;
 
 export type IUserService_getShiluRoles_Query = any;
-export type IUserService_getShiluRoles_Resp = any;
+
+export interface IUserService_getShiluRoles_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IUserService_getShiluRoles_Resp = IUserService_getShiluRoles_Resp_ext;
 
 export type IUserService_assignShiluRoles_Query = {
   roleId: number;
 };
-export type IUserService_assignShiluRoles_Resp = any;
+
+export interface IUserService_assignShiluRoles_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IUserService_assignShiluRoles_Resp = IUserService_assignShiluRoles_Resp_ext;
 
 export type IUserService_removeShiluRoles_Query = {
   roleId?: number;
 };
-export type IUserService_removeShiluRoles_Resp = any;
+
+export interface IUserService_removeShiluRoles_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IUserService_removeShiluRoles_Resp = IUserService_removeShiluRoles_Resp_ext;
 
 export type IUserService_getEnterCode_Query = {
   pavilionId?: number;
 };
-export type IUserService_getEnterCode_Resp = any;
+
+export interface IUserService_getEnterCode_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IUserService_getEnterCode_Resp = IUserService_getEnterCode_Resp_ext;
 
 export type IUserService_getLeaveInfo_Query = {
   pavilionId?: number;
 };
-export type IUserService_getLeaveInfo_Resp = any;
+
+export interface IUserService_getLeaveInfo_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IUserService_getLeaveInfo_Resp = IUserService_getLeaveInfo_Resp_ext;
 
 export type IUserService_addReserveRequest_Query = {
   calendar_id: number;
@@ -1150,12 +1302,16 @@ export type IUserService_addReserveRequest_Query = {
     }>;
   };
 };
-export type IUserService_addReserveRequest_Resp = any;
+
+export interface IUserService_addReserveRequest_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IUserService_addReserveRequest_Resp = IUserService_addReserveRequest_Resp_ext;
 
 export type IUserService_cancelReserveRequest_Query = {
   id: number;
 };
-export type IUserService_cancelReserveRequest_Resp = any;
+
+export interface IUserService_cancelReserveRequest_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IUserService_cancelReserveRequest_Resp = IUserService_cancelReserveRequest_Resp_ext;
 
 export class PageService extends BaseService {
   /**
@@ -1466,6 +1622,8 @@ exports[`generateAPIService api - {}: api - {} 1`] = `
 
 import { BaseService, IApiConfig } from 'ah-api-runtime';
 
+export interface IServiceRespCommon {} // for custom extend
+
 /** interfaces */
 
 export type IPageService_getList_Query = {
@@ -1473,6 +1631,8 @@ export type IPageService_getList_Query = {
   title?: string;
   summary?: string;
 };
+
+export interface IPageService_getList_Resp_ext extends IServiceRespCommon {} // for custom extend
 export type IPageService_getList_Resp = {
   pageSize: number;
   pageNum: number;
@@ -1487,7 +1647,7 @@ export type IPageService_getList_Resp = {
     c: any;
     e: any;
   }>;
-};
+} & IPageService_getList_Resp_ext;
 
 export type IPageService_createOne_Query = {
   title: string;
@@ -1495,7 +1655,9 @@ export type IPageService_createOne_Query = {
   content: string;
   meta: any;
 };
-export type IPageService_createOne_Resp = any;
+
+export interface IPageService_createOne_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IPageService_createOne_Resp = IPageService_createOne_Resp_ext;
 
 export type IPageService_updateOne_Query = {
   name: string;
@@ -1504,17 +1666,23 @@ export type IPageService_updateOne_Query = {
   content?: string;
   meta?: any;
 };
-export type IPageService_updateOne_Resp = any;
+
+export interface IPageService_updateOne_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IPageService_updateOne_Resp = IPageService_updateOne_Resp_ext;
 
 export type IPageService_removeOne_Query = {
   name?: string;
 };
-export type IPageService_removeOne_Resp = any;
+
+export interface IPageService_removeOne_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IPageService_removeOne_Resp = IPageService_removeOne_Resp_ext;
 
 export type IReserveService_getActivityList_Query = {
   id?: number;
 };
-export type IReserveService_getActivityList_Resp = any;
+
+export interface IReserveService_getActivityList_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IReserveService_getActivityList_Resp = IReserveService_getActivityList_Resp_ext;
 
 export type IReserveService_createActivity_Query = {
   /** (活动标题) */
@@ -1524,7 +1692,9 @@ export type IReserveService_createActivity_Query = {
     richDetailMeta?: any;
   };
 };
-export type IReserveService_createActivity_Resp = any;
+
+export interface IReserveService_createActivity_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IReserveService_createActivity_Resp = IReserveService_createActivity_Resp_ext;
 
 export type IReserveService_updateActivity_Query = {
   id: number;
@@ -1534,12 +1704,16 @@ export type IReserveService_updateActivity_Query = {
     richDetailMeta?: any;
   };
 };
-export type IReserveService_updateActivity_Resp = any;
+
+export interface IReserveService_updateActivity_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IReserveService_updateActivity_Resp = IReserveService_updateActivity_Resp_ext;
 
 export type IReserveService_removeActivity_Query = {
   id?: number;
 };
-export type IReserveService_removeActivity_Resp = any;
+
+export interface IReserveService_removeActivity_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IReserveService_removeActivity_Resp = IReserveService_removeActivity_Resp_ext;
 
 export type IReserveService_getCalenderList_Query = {
   id?: number;
@@ -1547,7 +1721,9 @@ export type IReserveService_getCalenderList_Query = {
   startTime?: string;
   endTime?: string;
 };
-export type IReserveService_getCalenderList_Resp = any;
+
+export interface IReserveService_getCalenderList_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IReserveService_getCalenderList_Resp = IReserveService_getCalenderList_Resp_ext;
 
 export type IReserveService_createCalender_Query = {
   activity_id: number;
@@ -1562,7 +1738,9 @@ export type IReserveService_createCalender_Query = {
     };
   }>;
 };
-export type IReserveService_createCalender_Resp = any;
+
+export interface IReserveService_createCalender_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IReserveService_createCalender_Resp = IReserveService_createCalender_Resp_ext;
 
 export type IReserveService_updateCalender_Query = {
   id: number;
@@ -1575,56 +1753,82 @@ export type IReserveService_updateCalender_Query = {
     richDetailMeta?: any;
   };
 };
-export type IReserveService_updateCalender_Resp = any;
+
+export interface IReserveService_updateCalender_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IReserveService_updateCalender_Resp = IReserveService_updateCalender_Resp_ext;
 
 export type IReserveService_getUserRequestList_Query = {
   calendar_id?: number;
 };
-export type IReserveService_getUserRequestList_Resp = any;
+
+export interface IReserveService_getUserRequestList_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IReserveService_getUserRequestList_Resp = IReserveService_getUserRequestList_Resp_ext;
 
 export type IReserveService_confirmUserRequest_Query = {
   id: number;
   username: string;
 };
-export type IReserveService_confirmUserRequest_Resp = any;
+
+export interface IReserveService_confirmUserRequest_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IReserveService_confirmUserRequest_Resp = IReserveService_confirmUserRequest_Resp_ext;
 
 export type ISystemService_getApiDoc_Query = any;
-export type ISystemService_getApiDoc_Resp = any;
+
+export interface ISystemService_getApiDoc_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type ISystemService_getApiDoc_Resp = ISystemService_getApiDoc_Resp_ext;
 
 export type ISystemService_getList_Query = any;
-export type ISystemService_getList_Resp = any;
+
+export interface ISystemService_getList_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type ISystemService_getList_Resp = ISystemService_getList_Resp_ext;
 
 export type ISystemService_updateOne_Query = any;
-export type ISystemService_updateOne_Resp = any;
+
+export interface ISystemService_updateOne_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type ISystemService_updateOne_Resp = ISystemService_updateOne_Resp_ext;
 
 export type IUserService_getUserInfo_Query = any;
-export type IUserService_getUserInfo_Resp = any;
+
+export interface IUserService_getUserInfo_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IUserService_getUserInfo_Resp = IUserService_getUserInfo_Resp_ext;
 
 export type IUserService_updateSession_Query = any;
-export type IUserService_updateSession_Resp = any;
+
+export interface IUserService_updateSession_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IUserService_updateSession_Resp = IUserService_updateSession_Resp_ext;
 
 export type IUserService_getShiluRoles_Query = any;
-export type IUserService_getShiluRoles_Resp = any;
+
+export interface IUserService_getShiluRoles_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IUserService_getShiluRoles_Resp = IUserService_getShiluRoles_Resp_ext;
 
 export type IUserService_assignShiluRoles_Query = {
   roleId: number;
 };
-export type IUserService_assignShiluRoles_Resp = any;
+
+export interface IUserService_assignShiluRoles_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IUserService_assignShiluRoles_Resp = IUserService_assignShiluRoles_Resp_ext;
 
 export type IUserService_removeShiluRoles_Query = {
   roleId?: number;
 };
-export type IUserService_removeShiluRoles_Resp = any;
+
+export interface IUserService_removeShiluRoles_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IUserService_removeShiluRoles_Resp = IUserService_removeShiluRoles_Resp_ext;
 
 export type IUserService_getEnterCode_Query = {
   pavilionId?: number;
 };
-export type IUserService_getEnterCode_Resp = any;
+
+export interface IUserService_getEnterCode_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IUserService_getEnterCode_Resp = IUserService_getEnterCode_Resp_ext;
 
 export type IUserService_getLeaveInfo_Query = {
   pavilionId?: number;
 };
-export type IUserService_getLeaveInfo_Resp = any;
+
+export interface IUserService_getLeaveInfo_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IUserService_getLeaveInfo_Resp = IUserService_getLeaveInfo_Resp_ext;
 
 export type IUserService_addReserveRequest_Query = {
   calendar_id: number;
@@ -1637,12 +1841,16 @@ export type IUserService_addReserveRequest_Query = {
     }>;
   };
 };
-export type IUserService_addReserveRequest_Resp = any;
+
+export interface IUserService_addReserveRequest_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IUserService_addReserveRequest_Resp = IUserService_addReserveRequest_Resp_ext;
 
 export type IUserService_cancelReserveRequest_Query = {
   id: number;
 };
-export type IUserService_cancelReserveRequest_Resp = any;
+
+export interface IUserService_cancelReserveRequest_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type IUserService_cancelReserveRequest_Resp = IUserService_cancelReserveRequest_Resp_ext;
 
 export class PageService extends BaseService {
   /**
@@ -1953,6 +2161,8 @@ exports[`generateAPIService api2 - {"operationIdSplitter":"_"}: api2 - {"operati
 
 import { BaseService, IApiConfig } from 'ah-api-runtime';
 
+export interface IServiceRespCommon {} // for custom extend
+
 /** interfaces */
 
 export type ISnapshotcontrollerService_create_Query = {
@@ -1962,9 +2172,13 @@ export type ISnapshotcontrollerService_create_Query = {
   /** (本地时间戳(ms)) */
   timestamp: string;
 };
-export type ISnapshotcontrollerService_create_Resp = string;
+
+export interface ISnapshotcontrollerService_create_Resp_ext extends IServiceRespCommon {} // for custom extend
+export type ISnapshotcontrollerService_create_Resp = string & ISnapshotcontrollerService_create_Resp_ext;
 
 export type IFaceindexcontrollerService_getPage_Query = any;
+
+export interface IFaceindexcontrollerService_getPage_Resp_ext extends IServiceRespCommon {} // for custom extend
 export type IFaceindexcontrollerService_getPage_Resp = {
   pageSize: number;
   pageNum: number;
@@ -1991,12 +2205,14 @@ export type IFaceindexcontrollerService_getPage_Resp = {
       };
     };
   }>;
-};
+} & IFaceindexcontrollerService_getPage_Resp_ext;
 
 export type IAuthcontrollerService_login_Query = {
   name: string;
   password: string;
 };
+
+export interface IAuthcontrollerService_login_Resp_ext extends IServiceRespCommon {} // for custom extend
 export type IAuthcontrollerService_login_Resp = {
   accessToken: string;
   user: {
@@ -2007,9 +2223,11 @@ export type IAuthcontrollerService_login_Resp = {
     nick: string;
     role: 'normal' | 'admin';
   };
-};
+} & IAuthcontrollerService_login_Resp_ext;
 
 export type IUsercontrollerService_getUser_Query = any;
+
+export interface IUsercontrollerService_getUser_Resp_ext extends IServiceRespCommon {} // for custom extend
 export type IUsercontrollerService_getUser_Resp = {
   id: number;
   created_at: string;
@@ -2017,9 +2235,11 @@ export type IUsercontrollerService_getUser_Resp = {
   name: string;
   nick: string;
   role: 'normal' | 'admin';
-};
+} & IUsercontrollerService_getUser_Resp_ext;
 
 export type IDevicecontrollerService_getPage_Query = any;
+
+export interface IDevicecontrollerService_getPage_Resp_ext extends IServiceRespCommon {} // for custom extend
 export type IDevicecontrollerService_getPage_Resp = {
   pageSize: number;
   pageNum: number;
@@ -2031,7 +2251,7 @@ export type IDevicecontrollerService_getPage_Resp = {
     name: string;
     title: string;
   }>;
-};
+} & IDevicecontrollerService_getPage_Resp_ext;
 
 export class SnapshotcontrollerService extends BaseService {
   /**

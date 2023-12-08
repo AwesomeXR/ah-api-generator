@@ -5,11 +5,15 @@ import { BaseService, IApiConfig } from './BaseService';
 import { BaseService, IApiConfig } from 'ah-api-runtime';
 <% } %>
 
+export interface IServiceRespCommon {}; // for custom extend
+
 /** interfaces */
 <% for (const [sName, rMap] of Object.entries(serviceMap)) { %>
 <% for (const [rName, rMeta] of Object.entries(rMap)) { %>
 export type I<%= sName %>Service_<%= rName %>_Query = <% if (rMeta.query && rMeta.query.tsTypeLiteral) { %><%- rMeta.query.tsTypeLiteral %><% } else { %>any<% } %>;
-export type I<%= sName %>Service_<%= rName %>_Resp = <% if (rMeta.response && rMeta.response.tsTypeLiteral) { %><%- rMeta.response.tsTypeLiteral %><%} else { %>any<% } %>;
+
+export interface I<%= sName %>Service_<%= rName %>_Resp_ext extends IServiceRespCommon {}; // for custom extend
+export type I<%= sName %>Service_<%= rName %>_Resp = <% if (rMeta.response && rMeta.response.tsTypeLiteral) { %><%- rMeta.response.tsTypeLiteral %>  & I<%= sName %>Service_<%= rName %>_Resp_ext <%} else { %> & I<%= sName %>Service_<%= rName %>_Resp_ext<% } %>;
 <% } %>
 <% } %>
 
